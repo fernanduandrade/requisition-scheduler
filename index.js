@@ -4,6 +4,7 @@ import cors from 'cors';
 import bodyParse from 'body-parser';
 
 import morgan from 'morgan';
+import log from 'log-beautify';
 
 //import para conecção com db
 import mongoose from 'mongoose';
@@ -24,6 +25,9 @@ mongoose.set('useFindAndModify', false);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+//Template engine 
+app.set('view engine', 'ejs');
+
 //Arquivos estátco
 app.use(express.static("public"));
 
@@ -31,12 +35,15 @@ app.use(express.static("public"));
 app.use(cors());
 
 //Log das requesições
-app.use(morgan());
-
-//Template engine 
-app.set('view engine', 'ejs');
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+log.setColors({
+    custom_: "green",
+});
+log.setSymbols({
+    custom_: "✅ ",
+});
 
 //Iniciando o servidor
 app.listen(port, () => {
-	console.log(`Servidor rodando na porta ${port}`);
+	log.custom_(`Server listening on port ${port}`);
 });
