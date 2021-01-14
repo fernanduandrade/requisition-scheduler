@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const appointment = new mongoose.Schema({
+const requisition = new mongoose.Schema({
     name: String,
     phone: String,
     description: String,
@@ -8,4 +8,4 @@ const appointment = new mongoose.Schema({
     examReleased: Boolean
 });
 
-exports default = appointment;
+export default = requisition;

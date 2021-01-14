@@ -1,7 +1,7 @@
 //Imports para o funcionando do servidor
 import express from 'express';
 import cors from 'cors';
-import bodyParse from 'body-parser';
+import bodyParser from 'body-parser';
 
 import morgan from 'morgan';
 import log from 'log-beautify';

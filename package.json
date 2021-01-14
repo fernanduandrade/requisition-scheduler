@@ -1,16 +1,18 @@
 {
-  "name": "requisition-system",
+  "name": "requisitions",
   "version": "1.0.0",
   "description": "Simple web app for register exams requisition",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node ./index.js",
+    "server": "nodemon ./index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "log-beautify": "^1.2.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.7"
   },
