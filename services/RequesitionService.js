@@ -51,7 +51,7 @@ class RequisitionService {
 		
 		} catch(err) {
 
-			console.error(ex.message);
+			console.error(err.message);
 		}
 	}
 

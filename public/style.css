@@ -21,3 +21,16 @@ footer a.text-light:hover { color: #fed136!important; text-decoration: none; }
 footer .cizgi { border-right: 1px solid #535e67; }
 @media (max-width: 992px) { footer .cizgi { border-right: none; } }
 
+
+.container-user{
+	background-color: #ffffff; 
+	border-radius: 9px;
+	height: 50vh;
+	margin-top: 20px;
+	margin-left: 200px;
+	width: 68vw;
+}
+
+.exam-title {
+	margin-top: 20px;
+}
