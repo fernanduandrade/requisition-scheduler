@@ -4,9 +4,9 @@ class RequisitionFactory {
 
 		let requisition = {
 			id: appointmentUser._id,
-			title: appointmentUser.name + ' - ' + appointmentUser.description,
-			phone: appointmentUser.phone,
-			scheduled: appointmentUser.date
+			title: appointmentUser.name,
+			start: appointmentUser.date,
+			end: appointmentUser.date
 		}
 
 		return requisition;

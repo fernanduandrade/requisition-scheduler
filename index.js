@@ -57,16 +57,16 @@ app.get('/register', (req, res) => {
 
 app.get('/list', async(req,res) => {
 
-	let requisition = await RequisitionService.GetAllRequisitions(true);
-	res.render('listRequisition', requisition)
+	let requisitions = await RequisitionService.GetAllRequisitions(true);
+	res.render('listRequisition', {requisitions})
 });
 
 app.get('/searchRequisition', async(req, res) => {
 	
 	let query = req.query.search;
-	let requisition = await RequisitionService.Search(query);
+	let requisitions = await RequisitionService.Search(query);
 
-	req.render('listRequisition', requisition);
+	req.render('listRequisition', {requisitions});
 
 });
 
