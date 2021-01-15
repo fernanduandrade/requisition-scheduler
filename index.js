@@ -3,6 +3,8 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
+import RequisitionService from './services/RequesitionService.js';
+
 import morgan from 'morgan';
 import log from 'log-beautify';
 
@@ -18,8 +20,11 @@ const app = express();
 const port = 3009;
 
 //Conexão com Mongo
-mongoose.connect("mongodb://localhost:27017/requisitions",{useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect("mongodb://localhost:27017/appointments",{useNewUrlParser: true, useUnifiedTopology: true})
 mongoose.set('useFindAndModify', false);
+
+//Log das requesições
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 
 //Parser dados das requesições 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -34,8 +39,62 @@ app.use(express.static("public"));
 //Permitir outros usar localmente
 app.use(cors());
 
-//Log das requesições
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+//Rotas
+app.get('/', (req, res) => {
+	res.render('index');
+});
+
+app.get('/requisitions', async(req, res) => {
+
+	let requisition = await RequisitionService.GetAllRequisitions(false);
+	res.json(requisition);
+
+});
+
+app.get('/register', (req, res) => {
+	res.render('registerRequisition');
+});
+
+app.get('/list', async(req,res) => {
+
+	let requisition = await RequisitionService.GetAllRequisitions(true);
+	res.render('listRequisition', requisition)
+});
+
+app.get('/searchRequisition', async(req, res) => {
+	
+	let query = req.query.search;
+	let requisition = await RequisitionService.Search(query);
+
+	req.render('listRequisition', requisition);
+
+});
+
+app.get('/exam/:id', async (req, res) => {
+	
+	let id = req.params.id;
+	let requisition = await RequisitionService.GetRequisitionById(id);
+
+	res.render('userRequisition', {requisition});
+
+});
+
+app.post('/register', async(req, res) => {
+	let data = await RequisitionService.Register(
+		req.body.name,
+		req.body.phone,
+		req.body.description,
+		req.body.date,
+	);
+
+	if(data) {
+		res.redirect('/');
+	} else {
+		res.status(400);
+	}
+});
+
+//Log costumizada 
 log.setColors({
     custom_: "green",
 });

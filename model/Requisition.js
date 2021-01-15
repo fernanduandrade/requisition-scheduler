@@ -8,4 +8,4 @@ const requisition = new mongoose.Schema({
     examReleased: Boolean
 });
 
-export default = requisition;
+export default requisition;

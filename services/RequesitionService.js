@@ -1,11 +1,11 @@
-import { requisition } from '../model/Requisition.js';
+import requisition from '../model/Requisition.js';
 import mongoose from 'mongoose';
 import RequisitionFactory from '../factories/RequisitionFactory.js';
 
 const RequisitionModel = mongoose.model("Requisition", requisition);
 
 class RequisitionService {
-	async Create(name, phone, description, date) {
+	async Register(name, phone, description, date) {
 		let newRequisition = new RequisitionModel({
 			name,
 			phone,
@@ -22,7 +22,7 @@ class RequisitionService {
 		}
 	}
 
-	async GetAllRequisition(scheduledRequistion) {
+	async GetAllRequisitions(scheduledRequistion) {
 		if(scheduledRequistion) {
 
 			return await RequisitionModel.find();
