@@ -58,7 +58,7 @@ class RequisitionService {
 	async Search(query) {
 		try {
 			
-			let result = await RequisitionModel.find().or([{name: query}, {phone: query}]);
+			let result = await RequisitionModel.find().or([{date: query}]);
 			
 			return result;
 		

@@ -17,7 +17,7 @@ import mongoose from 'mongoose';
 const app = express();
 
 //Porta do servidor
-const port = 3009;
+const port = 9000;
 
 //Conexão com Mongo
 mongoose.connect("mongodb://localhost:27017/appointments",{useNewUrlParser: true, useUnifiedTopology: true})
@@ -66,7 +66,7 @@ app.get('/searchRequisition', async(req, res) => {
 	let query = req.query.search;
 	let requisitions = await RequisitionService.Search(query);
 
-	req.render('listRequisition', {requisitions});
+	res.render('listRequisition', {requisitions});
 
 });
 
