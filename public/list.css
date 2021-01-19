@@ -119,3 +119,16 @@ table.table td i {
     margin-top: 6px;
     font-size: 95%;
 }    
+
+@media(max-width: 1080px) {
+    .search-box {margin-top: 6px;
+        position: absolute;        
+        float: left;
+    }
+    .table {
+        margin-top: 40px;
+    }
+    .actions {
+        display: none;
+    }
+}

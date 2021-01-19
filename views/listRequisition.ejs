@@ -13,22 +13,29 @@
 </head>
 <body>
 	<header>
-		<nav class="navbar navbar-expand-lg">
-			<div class="container">
-				<a class="navbar-brand text-white" href="/"><i class="fa fa-id-badge"></i>  CONTROLE DE REQUISIÇÕES</a>
-				<div class="collapse navbar-collapse" id="nvbCollapse">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item pl-1">
-							<a class="nav-link" href="/"><i class="fa fa-home fa-fw mr-1"></i>Início</a>
-						</li>
-						<li class="nav-item pl-1">
-							<a class="nav-link" href="/register"><i class="fa fa-user-plus fa-fw mr-1"></i>Cadastrar</a>
-						</li>
-						<li class="nav-item pl-1">
-							<a class="nav-link" href="/list"><i class="fa fa-th-list fa-fw mr-1"></i>Requisições Abertas</a>
-						</li>
-					</ul>
-				</div>
+		<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+			<a class="navbar-brand text-white" href="/"><i class="fa fa-calendar"></i> EXAMES LIERADOS</a>
+			<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span  class="navbar-toggler-icon">
+					<i class="fa fa-navicon" style="color:#fff; font-size: 28px;"></i>
+				</span>
+			</button>
+
+			<div" class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a style="color: #ffffff;" class="nav-link" href="/"><i class="fa fa-home fa-fw mr-1"></i>Início<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a style="color: #ffffff;" class="nav-link" href="/cadastro"><i class="fa fa-user-plus fa-fw mr-1"></i>Cadastrar</a>
+					</li>
+					<li class="nav-item">
+						<a style="color: #ffffff;" class="nav-link" href="/lista"><i class="fa fa-th-list fa-fw mr-1"></i>Agendados</a>
+					</li>
+					<li class="nav-item">
+						<a style="color: #ffffff;" class="nav-link" href="/lougout"><i class="fa fa-share fa-fw mr-1"></i>Sair</a>
+					</li>
+				</ul>
 			</div>
 		</nav>
 	</header>
@@ -40,14 +47,15 @@
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row query">
-                    <div class="col-sm-8"><h2>Regulações em <b>Análise</b></h2></div>
+                    <div class="col-sm-8"><h2>Lista de exames <b>Liberados</b></h2></div>
                     <div class="col-sm-4">
                         <div class="search-box">
                             <i class="material-icons">&#xE8B6;</i>
-                            <form action="/searchRequisition" method="GET">
-                            	<input type="date" id="data" name="search" class="form-control" placeholder="Data&hellip;">
-                            	<button>teste</button>
+
+                            <form action="/pesquisarAgendado" method="GET">
+                            	<input type="date" name="search" class="form-control" placeholder="dd/mm/aaaa">
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -57,20 +65,22 @@
                     <tr>
                         <th>Nome</th>
                         <th>Procedimento</th>
+                        <th>Local</th>
                         <th>Data</th>
-                        <th>Ações</th>
+                        <th class="actions">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                 	<% requisitions.forEach(requisition => { %>
 	                    <tr>
 	                        <td><%= requisition.name %></td>
-	                        <td><%= requisition.description %></td>
-	                        <td><%= requisition.date %></td>
-	                        <td>
+	                        <td><%= requisition.exam %></td>
+	                        <td><%= requisition.location %></td>
+	                        <td id="data"><%= requisition.date %></td>
+	                        <td class="actions">
 	                            <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
 	                            <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-	                            <a href="#" class="delete" title="Liberado" data-toggle="tooltip"><i class="material-icons">thumb_up</i></a>
+	                            <a href="#" class="delete" title="Liberado" data-toggle="tooltip"><i class="material-icons">check</i></a>
 	                        </td>
 	                    </tr>
                     <% }) %>

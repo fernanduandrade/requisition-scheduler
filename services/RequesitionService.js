@@ -5,13 +5,14 @@ import RequisitionFactory from '../factories/RequisitionFactory.js';
 const RequisitionModel = mongoose.model("Requisition", requisition);
 
 class RequisitionService {
-	async Register(name, phone, description, date) {
+	async Register(name, phone, date, location, exam) {
 		let newRequisition = new RequisitionModel({
 			name,
 			phone,
-			description,
 			date,
-			examReleased: false
+			location,
+			exam,
+			examFinished: false
 		});  
 
 		try {
@@ -28,8 +29,8 @@ class RequisitionService {
 			return await RequisitionModel.find();
 
 		} else {
-
-			let requisition = await RequisitionModel.find({'examReleased': false});
+			
+			let requisition = await RequisitionModel.find({'examFinished': false});
 			let requisitions = [];
 
 			requisition.forEach(req => {
@@ -63,7 +64,7 @@ class RequisitionService {
 			return result;
 		
 		}catch(err) {
-			console.error(ex.message);
+			console.error(err.message);
 		}
 	}
 }

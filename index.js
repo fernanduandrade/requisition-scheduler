@@ -44,24 +44,24 @@ app.get('/', (req, res) => {
 	res.render('index');
 });
 
-app.get('/requisitions', async(req, res) => {
+app.get('/liberados', async(req, res) => {
 
 	let requisition = await RequisitionService.GetAllRequisitions(false);
 	res.json(requisition);
 
 });
 
-app.get('/register', (req, res) => {
+app.get('/cadastro', (req, res) => {
 	res.render('registerRequisition');
 });
 
-app.get('/list', async(req,res) => {
+app.get('/lista', async(req,res) => {
 
 	let requisitions = await RequisitionService.GetAllRequisitions(true);
 	res.render('listRequisition', {requisitions})
 });
 
-app.get('/searchRequisition', async(req, res) => {
+app.get('/pesquisarAgendado', async(req, res) => {
 	
 	let query = req.query.search;
 	let requisitions = await RequisitionService.Search(query);
@@ -70,7 +70,7 @@ app.get('/searchRequisition', async(req, res) => {
 
 });
 
-app.get('/exam/:id', async (req, res) => {
+app.get('/paciente/:id', async (req, res) => {
 	
 	let id = req.params.id;
 	let requisition = await RequisitionService.GetRequisitionById(id);
@@ -79,12 +79,17 @@ app.get('/exam/:id', async (req, res) => {
 
 });
 
-app.post('/register', async(req, res) => {
+app.get('/logout', (req, res) => {
+	res.send('oi');
+});
+
+app.post('/cadastro', async(req, res) => {
 	let data = await RequisitionService.Register(
 		req.body.name,
 		req.body.phone,
-		req.body.description,
 		req.body.date,
+		req.body.location,
+		req.body.exam
 	);
 
 	if(data) {

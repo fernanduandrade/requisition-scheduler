@@ -3,9 +3,10 @@ import mongoose from 'mongoose';
 const requisition = new mongoose.Schema({
     name: String,
     phone: String,
-    description: String,
-    date: Date,
-    examReleased: Boolean
+    date: String,
+    location: String,
+    exam: String,
+    examFinished: Boolean
 });
 
 export default requisition;
