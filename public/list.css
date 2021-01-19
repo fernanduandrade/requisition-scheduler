@@ -120,6 +120,11 @@ table.table td i {
     font-size: 95%;
 }    
 
+.ui-datepicker {
+    /*background: transparent;*/
+    background: #ffffff;
+}
+
 @media(max-width: 1080px) {
     .search-box {margin-top: 6px;
         position: absolute;        
