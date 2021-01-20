@@ -3,19 +3,20 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
-import RequisitionService from './services/RequesitionService.js';
-
 import morgan from 'morgan';
 import log from 'log-beautify';
 
 //import para conecção com db
 import mongoose from 'mongoose';
 
-import RequisitionModel from './services/RequesitionService.js';
-
-import paginatedResults from './middleware/paginated.js';
-
 //Imports do Model e Serviço
+
+import requisition from './model/Requisition.js';
+
+import RequisitionService from './services/RequesitionService.js';
+
+//Mongo model
+const RequisitionModel = mongoose.model("Requisition", requisition);
 
 //Instânciando o express
 const app = express();
@@ -50,7 +51,7 @@ app.get('/', (req, res) => {
 
 app.get('/liberados', async(req, res) => {
 
-	let requisition = await RequisitionService.GetAllRequisitions(false);
+	const requisition = await RequisitionService.GetAllRequisitions(false);
 	res.json(requisition);
 
 });
@@ -59,23 +60,35 @@ app.get('/cadastro', (req, res) => {
 	res.render('registerRequisition');
 });
 
-app.get('/lista', paginatedResults(RequisitionModel), async(req,res) => {
+app.get('/lista', async(req,res) => {
 	
-	let teste = JSON.parse(res.paginatedResults);
-	console.log(teste);
-	console.log(requisitions);
-	let requisitions = await RequisitionService.GetAllRequisitions(true);
-	res.render('listRequisition', {requisitions, totalRegister, teste});
+	try {
+		const {page = 1, limit = 5} = req.query;
+
+		const requisitions = await RequisitionModel.find()
+		.limit(limit * 1)
+		.skip((page - 1) * limit);
+
+		const totalRegister = await RequisitionService.getTotalRegisters();
+		
+		res.render('listRequisition', {requisitions, totalRegister});
+	
+	} catch(err) {
+		console.error(err);
+	}
+	
+	// let requisitions = await RequisitionService.GetAllRequisitions(true);
+	
 });
 
 app.get('/pesquisarAgendado', async(req, res) => {
 	
 
-	let query = req.query.search;
+	const query = req.query.search;
 	
-	let totalRegister = await RequisitionService.getTotalRegisters();
+	const totalRegister = await RequisitionService.getTotalRegisters();
 
-	let requisitions = await RequisitionService.Search(query);
+	const requisitions = await RequisitionService.Search(query);
 
 	res.render('listRequisition', {requisitions, totalRegister});
 
@@ -83,8 +96,8 @@ app.get('/pesquisarAgendado', async(req, res) => {
 
 app.get('/paciente/:id', async (req, res) => {
 	
-	let id = req.params.id;
-	let requisition = await RequisitionService.GetRequisitionById(id);
+	const id = req.params.id;
+	const requisition = await RequisitionService.GetRequisitionById(id);
 
 	res.render('userRequisition', {requisition});
 
@@ -93,12 +106,9 @@ app.get('/paciente/:id', async (req, res) => {
 app.get('/logout', (req, res) => {
 	res.send('oi');
 });
-app.get('/users', paginatedResults(RequisitionModel), (req, res) => {
-  res.json(res.paginatedResults)
-})
 
 app.post('/cadastro', async(req, res) => {
-	let data = await RequisitionService.Register(
+	const data = await RequisitionService.Register(
 		req.body.name,
 		req.body.phone,
 		req.body.date,
@@ -111,6 +121,10 @@ app.post('/cadastro', async(req, res) => {
 	} else {
 		res.status(400);
 	}
+});
+
+app.put('/editar/:id', (req,res) => {
+
 });
 
 //Log costumizada 

@@ -2,7 +2,7 @@ import requisition from '../model/Requisition.js';
 import mongoose from 'mongoose';
 import RequisitionFactory from '../factories/RequisitionFactory.js';
 
-export const RequisitionModel = mongoose.model("Requisition", requisition);
+const RequisitionModel = mongoose.model("Requisition", requisition);
 
 class RequisitionService {
 	async Register(name, phone, date, location, exam) {

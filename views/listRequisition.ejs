@@ -31,7 +31,7 @@
 						<a style="color: #ffffff;" class="nav-link" href="/cadastro"><i class="fa fa-user-plus fa-fw mr-1"></i>Cadastrar</a>
 					</li>
 					<li class="nav-item">
-						<a style="color: #ffffff;" class="nav-link" href="/lista"><i class="fa fa-th-list fa-fw mr-1"></i>Agendados</a>
+						<a style="color: #ffffff;" class="nav-link" href="/lista?page=1&limit=10"><i class="fa fa-th-list fa-fw mr-1"></i>Agendados</a>
 					</li>
 					<li class="nav-item">
 						<a style="color: #ffffff;" class="nav-link" href="/lougout"><i class="fa fa-share fa-fw mr-1"></i>Sair</a>
@@ -80,7 +80,7 @@
 	                        <td id="data"><%= requisition.date %></td>
 	                        <td class="actions">
 	                            <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-	                            <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+	                            <a href="/editar/" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
 	                            <a href="#" class="delete" title="Liberado" data-toggle="tooltip"><i class="material-icons">check</i></a>
 	                        </td>
 	                    </tr>
@@ -91,12 +91,12 @@
                 <div class="hint-text">Mostrando <b>5</b> de <strong><%= totalRegister %></strong> cadastros</div>
                 <ul class="pagination">
                     <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
+                    <li class="page-item"><a href="/lista?page=1&limit=5" class="page-link">1</a></li>
+                    <li class="page-item"><a href="/lista?page=2&limit=5" class="page-link">2</a></li>
+                    <li class="page-item"><a href="/lista?page=3&limit=5" class="page-link">3</a></li>
+                    <li class="page-item"><a href="/lista?page=4&limit=5" class="page-link">4</a></li>
+                    <li class="page-item"><a href="/lista?page=5&limit=5" class="page-link">5</a></li>
+                    <li class="page-item"><a href="/lista?page=6&limit=5" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -117,6 +117,10 @@
         console.log('Submiting form');                
         $('#formId').submit();
     });
+
+    $(".page-item").click( function(){
+    	$(this).addClass("active");
+	});
 
 </script>
 
