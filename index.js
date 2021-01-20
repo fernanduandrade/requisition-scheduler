@@ -11,6 +11,10 @@ import log from 'log-beautify';
 //import para conecção com db
 import mongoose from 'mongoose';
 
+import RequisitionModel from './services/RequesitionService.js';
+
+import paginatedResults from './middleware/paginated.js';
+
 //Imports do Model e Serviço
 
 //Instânciando o express
@@ -55,18 +59,25 @@ app.get('/cadastro', (req, res) => {
 	res.render('registerRequisition');
 });
 
-app.get('/lista', async(req,res) => {
-
+app.get('/lista', paginatedResults(RequisitionModel), async(req,res) => {
+	
+	let teste = JSON.parse(res.paginatedResults);
+	console.log(teste);
+	console.log(requisitions);
 	let requisitions = await RequisitionService.GetAllRequisitions(true);
-	res.render('listRequisition', {requisitions})
+	res.render('listRequisition', {requisitions, totalRegister, teste});
 });
 
 app.get('/pesquisarAgendado', async(req, res) => {
 	
+
 	let query = req.query.search;
+	
+	let totalRegister = await RequisitionService.getTotalRegisters();
+
 	let requisitions = await RequisitionService.Search(query);
 
-	res.render('listRequisition', {requisitions});
+	res.render('listRequisition', {requisitions, totalRegister});
 
 });
 
@@ -82,6 +93,9 @@ app.get('/paciente/:id', async (req, res) => {
 app.get('/logout', (req, res) => {
 	res.send('oi');
 });
+app.get('/users', paginatedResults(RequisitionModel), (req, res) => {
+  res.json(res.paginatedResults)
+})
 
 app.post('/cadastro', async(req, res) => {
 	let data = await RequisitionService.Register(

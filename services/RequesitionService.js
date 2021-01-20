@@ -2,7 +2,7 @@ import requisition from '../model/Requisition.js';
 import mongoose from 'mongoose';
 import RequisitionFactory from '../factories/RequisitionFactory.js';
 
-const RequisitionModel = mongoose.model("Requisition", requisition);
+export const RequisitionModel = mongoose.model("Requisition", requisition);
 
 class RequisitionService {
 	async Register(name, phone, date, location, exam) {
@@ -64,6 +64,17 @@ class RequisitionService {
 			return result;
 		
 		}catch(err) {
+			console.error(err.message);
+		}
+	}
+
+	async getTotalRegisters() {
+		try {
+			let result = await RequisitionModel.find({'examFinished': false}).countDocuments();
+			
+			return result;
+
+		} catch(err) {
 			console.error(err.message);
 		}
 	}

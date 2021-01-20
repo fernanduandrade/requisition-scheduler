@@ -38,19 +38,19 @@
 
 	<br />
 
-	<div class="form container " style="background-color: #ffffff; border-radius: 20px; height: auto; padding-top: 20px;">
+	<div class="form container " style="background-color: #ffffff; border-radius: 20px; height: 72vh; padding-top: 20px;">
 		<form method="POST" action="/cadastro">
 			<strong><label for="name">Nome do Paciente</label></strong>
-			<input class="form-control" type="text" name="name"  id="name" placeholder="Nome do paciente">
+			<input class="form-control" type="text" name="name"  id="name" placeholder="Nome do paciente" required>
 
 			<strong><label for="phone">Celular</label></strong>
-			<input class="form-control phone" type="tej" name="phone" id="phone" placeholder="(00)00000-0000">
+			<input class="form-control phone" type="tej" name="phone" id="phone" placeholder="(00)00000-0000" required>
 
 			<strong><label for="date">Dia da Consulta</label></strong>
-			<input class="form-control" type="date" id="date" name="date">
+			<input class="form-control" type="date" id="date" name="date" required>
 
 			<strong><label for="location">Local</label></strong>
-			<input class="form-control" type="text" name="location" id="location" placeholder="Local do atendimento">
+			<input class="form-control" type="text" name="location" id="location" placeholder="Local do atendimento" required>
 
 			<strong><label for="exam">Procedimento</label></strong>
 			<input class="form-control" type="text" name="exam" id="exam" placeholder="Procedimento">
