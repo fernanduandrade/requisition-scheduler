@@ -6,7 +6,9 @@ const requisition = new mongoose.Schema({
     date: String,
     location: String,
     exam: String,
-    examFinished: Boolean
+    examFinished: Boolean,
+    password: String,
+    email: String
 });
 
 export default requisition;

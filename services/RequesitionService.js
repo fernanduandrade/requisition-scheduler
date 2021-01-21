@@ -6,7 +6,7 @@ const RequisitionModel = mongoose.model("Requisition", requisition);
 
 class RequisitionService {
 	async Register(name, phone, date, location, exam) {
-		let newRequisition = new RequisitionModel({
+		const newRequisition = new RequisitionModel({
 			name,
 			phone,
 			date,
@@ -17,6 +17,21 @@ class RequisitionService {
 
 		try {
 			await newRequisition.save();
+			return {status: 303}
+		} catch(err) {
+			console.error(err.message);
+		}
+	}
+
+	async UserAdmin(name, email, password) {
+		const newUser = new RequisitionModel({
+			name, 
+			email,
+			password
+		});
+
+		try {
+			await newUser.save();
 			return {status: 303}
 		} catch(err) {
 			console.error(err.message);
