@@ -78,6 +78,16 @@ class RequisitionService {
 			console.error(err.message);
 		}
 	}
+
+	async deleteUser(id, callback) {
+		try {
+
+			const result = await RequisitionModel.deleteOne({_id: id}, callback);
+			return result;
+		} catch (err) {
+			console.error(err.message);
+		}
+	}
 }
 
 export default new RequisitionService();

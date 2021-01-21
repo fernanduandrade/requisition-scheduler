@@ -31,7 +31,7 @@
 						<a style="color: #ffffff;" class="nav-link" href="/cadastro"><i class="fa fa-user-plus fa-fw mr-1"></i>Cadastrar</a>
 					</li>
 					<li class="nav-item">
-						<a style="color: #ffffff;" class="nav-link" href="/lista?page=1&limit=10"><i class="fa fa-th-list fa-fw mr-1"></i>Agendados</a>
+						<a style="color: #ffffff;" class="nav-link" href="/lista?page=1&limit=5"><i class="fa fa-th-list fa-fw mr-1"></i>Agendados</a>
 					</li>
 					<li class="nav-item">
 						<a style="color: #ffffff;" class="nav-link" href="/lougout"><i class="fa fa-share fa-fw mr-1"></i>Sair</a>
@@ -79,9 +79,9 @@
 	                        <td><%= requisition.location %></td>
 	                        <td id="data"><%= requisition.date %></td>
 	                        <td class="actions">
-	                            <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-	                            <a href="/editar/" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-	                            <a href="#" class="delete" title="Liberado" data-toggle="tooltip"><i class="material-icons">check</i></a>
+	                            <a href="/paciente/<%= requisition._id %>" class="view" title="Ver" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+	                            <a href="/editar/<%= requisition._id %>" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+	                            <a href="/usuario/<%= requisition._id %>" onclick="return confirm('Tem certeza que deseja excluir?');" class="delete" title="Deletar" data-toggle="tooltip"><i class="material-icons" style="color:red">delete</i></a>
 	                        </td>
 	                    </tr>
                     <% }) %>

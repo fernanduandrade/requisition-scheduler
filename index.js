@@ -123,8 +123,40 @@ app.post('/cadastro', async(req, res) => {
 	}
 });
 
-app.put('/editar/:id', (req,res) => {
+app.get('/editar/:id', async(req,res) => {
+	const id = req.params.id;
 
+	const requisition = await RequisitionService.GetRequisitionById(id);
+
+	res.render('editUser', {requisition});
+
+});
+
+app.post('/editar', async(req, res) => {
+	const {_id, name, phone, date, location, exam} = req.body;
+
+	const currentValues = {name, phone, date, location, exam}
+
+	const user = await RequisitionModel.findByIdAndUpdate({_id}, currentValues,{new: true});
+
+	if(user) {
+		res.redirect('/');
+	} else {
+		res.status(400);
+	}
+});
+
+app.get('/usuario/:id', async(req, res) => {
+
+	const _id = req.params.id;
+
+	const result = await RequisitionService.deleteUser(_id);
+
+	if(result) {
+		res.redirect('/lista?page=1&limit=5');
+	} else {
+		res.status(400);
+	}
 });
 
 //Log costumizada 

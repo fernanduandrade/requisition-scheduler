@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Cadastro de Requesição</title>
-	<link rel="stylesheet" href="style.css">
+	<link  href="style.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -26,7 +26,10 @@
 						<a style="color: #ffffff;" class="nav-link" href="/"><i class="fa fa-home fa-fw mr-1"></i>Início<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a style="color: #ffffff;" class="nav-link" href="/lista?page=1&limit=10"><i class="fa fa-th-list fa-fw mr-1"></i>Agendados</a>
+						<a style="color: #ffffff;" class="nav-link" href="/cadastro"><i class="fa fa-user-plus fa-fw mr-1"></i>Cadastrar</a>
+					</li>
+					<li class="nav-item">
+						<a style="color: #ffffff;" class="nav-link" href="/lista?page=1&limit=5"><i class="fa fa-th-list fa-fw mr-1"></i>Agendados</a>
 					</li>
 					<li class="nav-item">
 						<a style="color: #ffffff;" class="nav-link" href="/lougout"><i class="fa fa-share fa-fw mr-1"></i>Sair</a>
@@ -39,26 +42,29 @@
 	<br />
 
 	<div class="form container " style="background-color: #ffffff; border-radius: 20px; height: 72vh; padding-top: 20px;">
-		<form method="POST" action="/cadastro">
+		<form method="POST" action="/editar">
 			<strong><label for="name">Nome do Paciente</label></strong>
-			<input class="form-control" type="text" name="name"  id="name" placeholder="Nome do paciente" required>
+			<input class="form-control" type="text" name="name"  id="name" placeholder="Nome do paciente" value="<%= requisition.name%>" required>
 
 			<strong><label for="phone">Celular</label></strong>
-			<input class="form-control phone" type="tej" name="phone" id="phone" placeholder="(00)00000-0000" required>
+			<input class="form-control phone" type="tel" name="phone" id="phone" placeholder="(00)00000-0000" value="<%= requisition.phone%>" required>
 
 			<strong><label for="date">Dia da Consulta</label></strong>
-			<input class="form-control" type="date" id="date" name="date" required>
+			<input class="form-control" type="date" id="date" name="date"value="<%= requisition.date%>" required>
 
 			<strong><label for="location">Local</label></strong>
-			<input class="form-control" type="text" name="location" id="location" placeholder="Local do atendimento" required>
+			<input class="form-control" type="text" name="location" value="<%= requisition.location%>" id="location" placeholder="Local do atendimento" required>
 
 			<strong><label for="exam">Procedimento</label></strong>
-			<input class="form-control" type="text" name="exam" id="exam" placeholder="Procedimento">
+			<input class="form-control" type="text" name="exam" id="exam" value="<%= requisition.exam%>" placeholder="Procedimento">
+
+			<input type="hidden" name="_id" value="<%= requisition._id%>"> 
 
 			<br />
 
-			<button class="btn btn-success btn-block">Salvar</button>
-			
+
+			<button class="btn btn-success btn-block">Editar</button>
+
 		</form>
 	</div>
 
@@ -66,7 +72,7 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="./jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 <script>
 	$('.phone').mask('(00)00000-0000');
 </script>
