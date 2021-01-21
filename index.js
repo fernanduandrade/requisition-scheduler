@@ -1,13 +1,21 @@
 //Imports para o funcionando do servidor
 import express from 'express';
+import flash from 'express-flash';
+import session from 'express-session';
+
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import bcrypt from 'bcrypt';
 
 import morgan from 'morgan';
 import log from 'log-beautify';
 
 //import para conecção com db
 import mongoose from 'mongoose';
+
+//variaveis de ambiente
+import dotenv from 'dotenv';
+dotenv.config();
 
 //Imports do Model e Serviço
 
@@ -18,6 +26,15 @@ import RequisitionService from './services/RequesitionService.js';
 //Mongo model
 const RequisitionModel = mongoose.model("Requisition", requisition);
 
+//passport
+
+import initializePassort from './passport-config.js';
+initializePassort(passport, async email => {
+	const user = await RequisitionModel.find({"email": email})
+
+	return user; 
+});
+
 //Instânciando o express
 const app = express();
 
@@ -27,6 +44,16 @@ const port = 9000;
 //Conexão com Mongo
 mongoose.connect("mongodb://localhost:27017/appointments",{useNewUrlParser: true, useUnifiedTopology: true})
 mongoose.set('useFindAndModify', false);
+
+app.use(flash());
+app.use(session({
+	secret: process.env.SESSION_SECRET,
+	resave: false,
+	saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Log das requesições
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
@@ -102,6 +129,44 @@ app.get('/paciente/:id', async (req, res) => {
 	res.render('userRequisition', {requisition});
 
 });
+
+app.get('/register', (req, res) => {
+	res.render('registerUserAdmin');
+});
+
+app.post('/register', async(req, res) => {
+	
+	try {
+
+		const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+		const data = await RequisitionService.UserAdmin(
+			req.body.name,
+			req.body.email,
+			hashedPassword
+		);
+
+		if(data) {
+			res.redirect('/login');
+		} else {
+			res.redirect('/register');
+		}
+	}catch(err) {
+		console.error(err.message);
+	}
+});
+
+app.get('/login', (req, res) => {
+	res.render('login');
+});
+
+
+app.post('/login', passport.authenticate('local', {
+	successRedirect: '/',
+	failureRedirect: '/login',
+	failureFlash: true
+
+}));
 
 app.get('/logout', (req, res) => {
 	res.send('oi');
