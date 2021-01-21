@@ -10,18 +10,18 @@
 		<h3>Login</h3>
 		<% if(messages.error) { %>
 
-			<% messages.error %>
+			<%= messages.error %>
 
 		<% } %>
 		<form action="/login" method="POST">
 			<label for="name">Nome</label>
-			<input type="text" name="name" id="name"required>
+			<input type="text" name="name" id="name" required>
 
 			<br>
 
 			<label for="password">Password</label>
 			<input type="password" name="password" id="password" required>
-			<button type="submit">criar</button>
+			<button type="submit">Entrar</button>
 		</form>
 	</div>
 </body>

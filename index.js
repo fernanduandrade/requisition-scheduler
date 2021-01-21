@@ -3,6 +3,9 @@ import express from 'express';
 import flash from 'express-flash';
 import session from 'express-session';
 
+import { Strategy as LocalStrategy} from 'passport-local'
+
+
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import bcrypt from 'bcrypt';
@@ -28,12 +31,8 @@ const RequisitionModel = mongoose.model("Requisition", requisition);
 
 //passport
 
-import initializePassort from './passport-config.js';
-initializePassort(passport, async email => {
-	const user = await RequisitionModel.find({"email": email})
+import passport from 'passport'
 
-	return user; 
-});
 
 //Instânciando o express
 const app = express();
@@ -46,14 +45,15 @@ mongoose.connect("mongodb://localhost:27017/appointments",{useNewUrlParser: true
 mongoose.set('useFindAndModify', false);
 
 app.use(flash());
-app.use(session({
-	secret: process.env.SESSION_SECRET,
-	resave: false,
-	saveUninitialized: false
-}));
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(session({
+   secret:'secret',
+  saveUninitialized: true,
+   resave: true
+}));
 
 //Log das requesições
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
@@ -163,13 +163,46 @@ app.get('/login', (req, res) => {
 
 app.post('/login', passport.authenticate('local', {
 	successRedirect: '/',
-	failureRedirect: '/login',
-	failureFlash: true
-
+	failureRedirect:'/login', 
+	failureFlash: 'Usuário ou senha inválido',
+	successFlash: 'Credenciais corretas'
 }));
 
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  RequisitionService.GetRequisitionById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
+
+passport.use(new LocalStrategy({
+    usernameField: 'name',
+    passwordField: 'password'
+},
+    async (name, password, done) => {
+        try {
+            const user = await RequisitionService.getUserByName(name);
+ 
+            // usuário inexistente
+            if (!user) { return done(null, false) }
+ 
+            // comparando as senhas
+            const isValid = bcrypt.compareSync(password, user.password);
+            if (!isValid) return done(null, false)
+ 
+            return done(null, user)
+        } catch (err) {
+            done(err, false);
+        }
+    }
+));
+
 app.get('/logout', (req, res) => {
-	res.send('oi');
+	res.send('teste');
 });
 
 app.post('/cadastro', async(req, res) => {

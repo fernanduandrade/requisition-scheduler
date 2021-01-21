@@ -61,7 +61,7 @@ class RequisitionService {
 	async GetRequisitionById(id) {
 		try {
 
-			let result = await RequisitionModel.findOne({'_id': id});
+			const result = await RequisitionModel.findOne({'_id': id});
 
 			return  result;
 		
@@ -70,6 +70,32 @@ class RequisitionService {
 			console.error(err.message);
 		}
 	}
+
+	async getUserByName(name) {
+		
+		try {
+
+		const result = await RequisitionModel.findOne({'name': name});
+
+		return result;
+	} catch(err) {
+		console.error(err.messsage);
+	} 	
+	}
+
+	async comparePassword(candidatePassword, hash, callback){
+		try {
+
+			const result = await bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
+	    		callback(null, isMatch);
+			})
+
+			return result;
+	
+		} catch(err) {
+			console.error(err.message);
+		}
+	}	
 
 	async Search(query) {
 		try {
