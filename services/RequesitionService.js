@@ -1,7 +1,7 @@
 import requisition from '../model/Requisition.js';
 import mongoose from 'mongoose';
 import RequisitionFactory from '../factories/RequisitionFactory.js';
-
+import { Admin } from '../model/Admin.js';
 const RequisitionModel = mongoose.model("Requisition", requisition);
 
 class RequisitionService {
@@ -24,7 +24,7 @@ class RequisitionService {
 	}
 
 	async UserAdmin(name, email, password) {
-		const newUser = new RequisitionModel({
+		const newUser = new Admin({
 			name, 
 			email,
 			password

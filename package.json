@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js",
-    "server": "nodemon ./index.js"
+    "server": "nodemon --exec babel-node ./index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/node": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
     "dotenv": "^8.2.0",
     "log-beautify": "^1.2.0",
     "morgan": "^1.10.0",

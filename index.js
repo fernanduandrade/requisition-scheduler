@@ -25,7 +25,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 //Imports do Model e Serviço
-
 import requisition from './model/Requisition.js';
 
 import RequisitionService from './services/RequesitionService.js';
@@ -41,6 +40,7 @@ const port = 9000;
 
 //Conexão com Mongo
 mongoose.connect("mongodb://localhost:27017/appointments",{useNewUrlParser: true, useUnifiedTopology: true})
+
 mongoose.set('useFindAndModify', false);
 mongoose.set('debug', true);
 
