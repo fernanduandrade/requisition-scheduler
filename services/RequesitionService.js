@@ -1,12 +1,11 @@
-import requisition from '../model/Requisition.js';
-import mongoose from 'mongoose';
+
 import RequisitionFactory from '../factories/RequisitionFactory.js';
-import { Admin } from '../model/Admin.js';
-const RequisitionModel = mongoose.model("Requisition", requisition);
+import { Admin } from '../model/Admin';
+import { Requisition } from '../model/Requisition';
 
 class RequisitionService {
 	async Register(name, phone, date, location, exam) {
-		const newRequisition = new RequisitionModel({
+		const newRequisition = new Requisition({
 			name,
 			phone,
 			date,
@@ -41,11 +40,11 @@ class RequisitionService {
 	async GetAllRequisitions(scheduledRequistion) {
 		if(scheduledRequistion) {
 
-			return await RequisitionModel.find();
+			return await Requisition.find();
 
 		} else {
 			
-			let requisition = await RequisitionModel.find({'examFinished': false});
+			let requisition = await Requisition.find({'examFinished': false});
 			let requisitions = [];
 
 			requisition.forEach(req => {
@@ -61,7 +60,7 @@ class RequisitionService {
 	async GetRequisitionById(id) {
 		try {
 
-			const result = await RequisitionModel.findOne({'_id': id});
+			const result = await Requisition.findOne({'_id': id});
 
 			return  result;
 		
@@ -75,7 +74,7 @@ class RequisitionService {
 		
 		try {
 
-		const result = await RequisitionModel.findOne({'name': name});
+		const result = await Requisition.findOne({'name': name});
 
 		return result;
 	} catch(err) {
@@ -100,7 +99,7 @@ class RequisitionService {
 	async Search(query) {
 		try {
 			
-			let result = await RequisitionModel.find().or([{date: query}]);
+			let result = await Requisition.find().or([{date: query}]);
 			
 			return result;
 		
@@ -111,7 +110,7 @@ class RequisitionService {
 
 	async getTotalRegisters() {
 		try {
-			let result = await RequisitionModel.find({'examFinished': false}).countDocuments();
+			let result = await Requisition.find({'examFinished': false}).countDocuments();
 			
 			return result;
 
@@ -123,7 +122,7 @@ class RequisitionService {
 	async deleteUser(id, callback) {
 		try {
 
-			const result = await RequisitionModel.deleteOne({_id: id}, callback);
+			const result = await Requisition.deleteOne({_id: id}, callback);
 			return result;
 		} catch (err) {
 			console.error(err.message);

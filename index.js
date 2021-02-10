@@ -1,10 +1,11 @@
-//Imports para o funcionando do servidor
 import express from 'express';
 import flash from 'express-flash';
 import session  from 'express-session';
 
-import { Strategy as LocalStrategy} from 'passport-local';
+import dotenv from 'dotenv';
+dotenv.config();
 
+import { Strategy as LocalStrategy} from 'passport-local';
 import passport from 'passport';
 
 import cors from 'cors';
@@ -13,7 +14,11 @@ import bcrypt from 'bcrypt';
 
 import morgan from 'morgan';
 
+import {checkNotAuthenticated, isAuthenticated} from './middleware/authenticationMiddleware';
+
 import log from 'log-beautify';
+
+import Datebase from './database/connection';
 
 import methodOverride from 'method-override'
 
@@ -21,28 +26,20 @@ import methodOverride from 'method-override'
 import mongoose from 'mongoose';
 
 //variaveis de ambiente
-import dotenv from 'dotenv';
-dotenv.config();
 
-//Imports do Model e Serviço
+
 import requisition from './model/Requisition.js';
 
 import RequisitionService from './services/RequesitionService.js';
 
-//Mongo model
 const RequisitionModel = mongoose.model("Requisition", requisition);
 
-//Instânciando o express
+const PORT = 3001 || process.env.PORT;
 const app = express();
 
-//Porta do servidor
-const port = 9000;
 
 //Conexão com Mongo
-mongoose.connect("mongodb://localhost:27017/appointments",{useNewUrlParser: true, useUnifiedTopology: true})
 
-mongoose.set('useFindAndModify', false);
-mongoose.set('debug', true);
 
 app.use(flash());
 
@@ -61,27 +58,6 @@ app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
 app.use(cors());
-
-
-const isAuthenticated = (req,res, next) => {
-	try {
-		if (req.isAuthenticated())  
-			return next();
-
-		res.redirect('/login');
-	
-	} catch(err) {
-		console.error(err.message);
-	}
-}
-
-const checkNotAuthenticated = (req, res, next) => {
-	if(req.isAuthenticated()) {
-		return res.redirect('/')
-	} else {
-  		next ()
-	}
-}
 
 
 app.use(methodOverride('_method'));
@@ -165,7 +141,6 @@ app.get('/lista', isAuthenticated, async (req,res) => {
 		console.error(err);
 	}
 	
-	// let requisitions = await RequisitionService.GetAllRequisitions(true);
 	
 });
 
@@ -291,7 +266,6 @@ app.get('/usuario/:id', isAuthenticated, async(req, res) => {
 	}
 });
 
-//Log costumizada 
 log.setColors({
     custom_: "green",
 });
@@ -299,7 +273,6 @@ log.setSymbols({
     custom_: "✅ ",
 });
 
-//Iniciando o servidor
-app.listen(port, () => {
-	log.custom_(`Server listening on port ${port}`);
+app.listen(PORT, () => {
+	log.custom_(`Servidor rodando na porta ${PORT}`);
 });

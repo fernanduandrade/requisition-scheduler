@@ -1,14 +1,32 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
-const requisition = new mongoose.Schema({
-    name: String,
-    phone: String,
-    date: String,
-    location: String,
-    exam: String,
-    examFinished: Boolean,
+const requisitionSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    date: {
+        type: String,
+        required: true
+    },
+    location: {
+        type: String,
+        required: true
+    },
+    exam: {
+        type: String,
+        required: false
+    },
+    examFinished: {
+        type: Boolean,
+        required: false
+    },
     password: String,
     email: String
-});
+}, {timestamps: true});
 
-export default requisition;
+export const Requisition = mongoose.model('Requisition', requisitionSchema);
