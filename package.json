@@ -9,13 +9,12 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.12.13",
     "@babel/node": "^7.12.13",
     "@babel/preset-env": "^7.12.13",
     "dotenv": "^8.2.0",
-    "log-beautify": "^1.2.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.7"
   },
@@ -27,7 +26,6 @@
     "express": "^4.17.1",
     "express-flash": "0.0.2",
     "express-session": "^1.17.1",
-    "method-override": "^3.0.0",
     "mongoose": "^5.11.11",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"

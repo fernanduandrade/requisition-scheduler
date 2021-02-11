@@ -5,10 +5,17 @@ import { Requisition } from '../model/Requisition';
 import RequisitionService from '../services/RequesitionService.js';
 import {checkNotAuthenticated, isAuthenticated} from '../middleware/authMiddleware';
 
+import passport from 'passport';
+
 const router = Router();
 
 router.get('/', isAuthenticated,(req, res) => {
 	res.render('index.ejs');
+});
+
+router.get('/logout', (req, res) => {
+	req.logOut();
+	res.redirect('/login');
 });
 
 router.get('/liberados', isAuthenticated, async(req, res) => {
@@ -73,6 +80,12 @@ router.get('/editar/:id', isAuthenticated, async(req,res) => {
 	const requisition = await RequisitionService.GetRequisitionById(id);
 	res.render('editUser', {requisition});
 });
+
+router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
+	successRedirect: '/',
+	failureRedirect:'/login', 
+	failureFlash: 'Usuário ou senha inválido',
+}));
 
 router.post('/cadastro', isAuthenticated, RequisitionController.create);
 router.post('/register', checkNotAuthenticated, AdminController.create);
