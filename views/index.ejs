@@ -65,7 +65,19 @@
 		events: 'agendados',
 		eventClick: function(req) {
 			window.location.href = '/paciente/'+req.event.id
-		}
+		},
+	        eventAfterRender: function (event, $element, view) {
+	var $container = $element.parents('.fc-content-skeleton:first').find('.fc-event-container:last');
+	var $totalRow = $container.find('.fc-day-grid-event.total');
+	if ($totalRow.length == 0) {
+        $totalRow = $('<a class="fc-day-grid-event total fc-h-event fc-event fc-start fc-end"><div class="fc-content"><span>Total: </span><span class="total-time"></span></div></a>')
+        .appendTo($container);
+	}
+	var $total = $totalRow.find('.total-time');
+	var total = parseFloat($totalRow.find('.total-time').text());
+	total = isNaN(total) ? parseFloat(event.worktime) : total + parseFloat(event.worktime);
+	$total.text(total);
+}
 	});
 
 	calendar.render();
