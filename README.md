@@ -8,9 +8,16 @@
 
 ## :heart: Como usar
 
-## :computer: Instale as dependências necessárias
+## :computer: Instale as dependências necessárias:
 ```
-npm install 
+npm install
+```
+
+## :computer: Criei um arquivo `.env` e defina as suas variáveis de ambiente:
+
+```
+PORT={SUAPORTA}
+SESSION_SECRET={SUASESSIONSECRET}
 ```
 
 ## :computer: Rode o servidor
@@ -19,10 +26,10 @@ npm install
 npm run server
 ```
 
-## :computer: Após isso: 
+## :computer: Após isso registre uma conta e você será redirecionando para entrar na aplicação: 
 
 ```
-http://localhost:3001
+http://localhost:3001/register
 ```
 
 <br>
