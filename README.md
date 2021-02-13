@@ -26,13 +26,11 @@ SESSION_SECRET={SUASESSIONSECRET}
 npm run server
 ```
 
-## :computer: Após isso registre uma conta e você será redirecionando para entrar na aplicação: 
+## :computer: Após isso registre uma conta e você será redirecionado para entrar na aplicação: 
 
 ```
 http://localhost:3001/register
 ```
-
-<br>
 
 ## :mailbox_with_mail: License
 
