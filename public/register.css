@@ -102,3 +102,96 @@ button:hover {
     color: red;
     font-weight: bold;
 }
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #2a9df4;
+}
+
+.container {
+    height: 100vh;
+    padding: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    background-color: #ffffff;
+    border-radius: 25px;
+    width:300px;
+    height: 420px;
+    box-shadow: 0 9px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.flex-center {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+label {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #2a9df4;
+    margin-bottom: 5px;
+
+}
+
+.register-title{
+    height: 40px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 30px;
+    color: #2a9df4;
+    align-self: center;
+}
+
+.input-register {
+    text-decoration: none;
+    border-radius: 5px;
+    align-self: center;
+    width: 16em;
+    height: 2em;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid #DDDDDD;
+    
+}
+
+.input-register:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
+button {
+    height: 50px;
+    align-self: center;
+    width: 225px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #2a9df4;
+    border-radius: 10px;
+}
+
+button:hover {
+    transition: 0.3s;
+    background-color: #ffffff;
+    color: #2a9df4;
+    cursor: pointer;
+}

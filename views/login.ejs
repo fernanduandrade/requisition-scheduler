@@ -3,26 +3,32 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="login.css">
 	<title>Login</title>
 </head>
 <body>
-	<div>
-		<h3>Login</h3>
-		<% if(messages.error) { %>
+  <div class="container">
+    <form class="form" action="/login" method="POST">
+	  
+	  <div class="flex-center">
+	    <h3 class="login-title">LOGIN</h3>
 
-			<%= messages.error %>
+	    <label  for="name">NOME</label>
+	    <input class="input-login" type="text" name="name" id="name" required placeholder="Digite o seu nome">
 
-		<% } %>
-		<form action="/login" method="POST">
-			<label for="name">Nome</label>
-			<input type="text" name="name" id="name" required>
+	    <br>
+	    
+	    <label  for="password">SENHA</label>
+	    <input class="input-login" type="password" name="password" id="password" required placeholder="Digite a sua senha">
 
-			<br>
-
-			<label for="password">Password</label>
-			<input type="password" name="password" id="password" required>
-			<button type="submit">Entrar</button>
-		</form>
-	</div>
+	    <br>
+	    
+	    <button type="submit">ENTRAR</button>
+	    <% if(messages.error) { %>
+              <p class="login-error"><%= messages.error %></p>
+	    <% } %>
+	  </div>
+    </form>
+  </div>
 </body>
 </html>

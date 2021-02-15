@@ -3,25 +3,32 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Register</title>
+	<link rel="stylesheet" href="register.css"> 
+	<title>Cadastrar Admin</title>
 </head>
 <body>
-	<div>
-		<h3>Criar Admin</h3>
-		<form action="/register" method="POST">
-			<label for="name">Nome</label>
-			<input type="text" name="name" id="name"required>
+	<div class="container">
+		
+		<form class="form"  action="/register" method="POST">
+		  <div class="flex-center">
+		    <h3 class="register-title" >CRIAR ADMIN</h3>
+		  <label for="name">NOME</label>
+			<input class="input-register"  type="text" name="name" id="name"required>
 
 			<br>
 
-			<label for="email">Email</label>
-			<input type="email" name="email" id="email" required>
+			<label for="email">EMAIL</label>
+			<input class="input-register" type="email" name="email" id="email" required>
 
 			<br>
 
-			<label for="password">Password</label>
-			<input type="password" name="password" id="password" required>
-			<button type="submit">criar</button>
+			<label for="password">SENHA</label>
+			<input class="input-register"  type="password" name="password" id="password" required>
+
+			<br>
+			
+			<button type="submit">CADASTRAR</button>
+			</div>
 		</form>
 	</div>
 </body>
