@@ -21,8 +21,8 @@ body {
 
 .form {
     background-color: #FFFFFF;
-    border-radius: 25px;
-    width:300px;
+    border-radius: 15px;
+    width:400px;
     height: 360px;
     box-shadow: 0 9px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
@@ -35,7 +35,7 @@ body {
 }
 
 label {
-    margin-top: 5px;
+    margin-top: 2px;
     text-align: center;
     font-weight: bold;
     font-size: 20px;
@@ -45,10 +45,10 @@ label {
 }
 
 .login-title{
-    height: 70px;
+    height: 60px;
     margin-top: 10px;
     text-align: center;
-    font-size: 40px;
+    font-size: 20px;
     color: #2a9df4;
     align-self: center;
 }
@@ -79,7 +79,7 @@ label {
 button {
     border: 1px solid #DDDDDD;
     outline: none;
-    height: 50px;
+    height: 40px;
     align-self: center;
     width: 225px;
     font-weight: bold;
@@ -126,7 +126,7 @@ body {
     background-color: #ffffff;
     border-radius: 25px;
     width:300px;
-    height: 420px;
+    height: 440px;
     box-shadow: 0 9px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
@@ -156,7 +156,6 @@ label {
 }
 
 .input-register {
-    text-decoration: none;
     border-radius: 5px;
     align-self: center;
     width: 16em;
@@ -179,7 +178,8 @@ label {
     border: 1px solid rgba(81, 203, 238, 1);
 }
 
-button {
+
+.input-submit {
     height: 50px;
     align-self: center;
     width: 225px;
@@ -187,11 +187,19 @@ button {
     color: #ffffff;
     background-color: #2a9df4;
     border-radius: 10px;
+    border: none;
 }
 
-button:hover {
-    transition: 0.3s;
+.input-submit:hover {
+    transition: 0.2s;
     background-color: #ffffff;
     color: #2a9df4;
     cursor: pointer;
+    border: 2px solid #2a9df4;
+}
+
+#message {
+    font-weight: bold;
+    margin-top: 5px;
+    align-self: center
 }

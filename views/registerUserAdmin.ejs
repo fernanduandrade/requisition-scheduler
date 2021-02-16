@@ -9,27 +9,56 @@
 <body>
 	<div class="container">
 		
-		<form class="form"  action="/register" method="POST">
+		<form class="form"  id="form" action="/register" method="POST">
 		  <div class="flex-center">
 		    <h3 class="register-title" >CRIAR ADMIN</h3>
 		  <label for="name">NOME</label>
-			<input class="input-register"  type="text" name="name" id="name"required>
-
-			<br>
+			<input class="input-register"  type="text" name="name" id="name" required>
 
 			<label for="email">EMAIL</label>
 			<input class="input-register" type="email" name="email" id="email" required>
 
-			<br>
-
-			<label for="password">SENHA</label>
-			<input class="input-register"  type="password" name="password" id="password" required>
-
-			<br>
 			
-			<button type="submit">CADASTRAR</button>
+			<label for="password">SENHA</label>
+			<input class="input-register"  type="password" name="password" id="password" onkeyup='check();' required>
+
+			<label for="password">CONFIRMAR SENHA</label>
+			<input class="input-register"  type="password" name="confirmPassword" id="confirmPassword" onkeyup='check();' required>
+			<span id="message"></span>
+			<br>
+			<input class="input-submit" type="submit" value="CADASTRAR" />
 			</div>
 		</form>
 	</div>
 </body>
+<script>
+	let form = document.querySelector('form')
+	let inputs = document.querySelectorAll('input')
+	let required_inputs = document.querySelectorAll('input[required]')
+	let register = document.querySelector('input[type="submit"]')
+	form.addEventListener('keyup', function(e) {
+		let disabled = false
+		inputs.forEach(function(input, index) {
+			if (input.value === '' || !input.value.replace(/\s/g, '').length) {
+				disabled = true
+			}
+		})
+		if (disabled) {
+			register.setAttribute('disabled', 'disabled')
+		} else {
+			register.removeAttribute('disabled')
+		}
+	})
+
+	let check = function() {
+	    if (document.getElementById('password').value == document.getElementById('confirmPassword').value) {
+         	document.getElementById('message').style.color = 'green';
+	        document.getElementById('message').innerHTML = 'Senhas correspondem';
+	    } else {
+	        document.getElementById('message').style.color = 'red';
+	        document.getElementById('message').innerHTML = 'Senhas não correspondem';
+	    }
+	}
+
+</script>
 </html>

@@ -1,5 +1,4 @@
 import { Admin } from '../model/Admin';
-
 class AdminController {
     async create(req, res) {
 
@@ -11,15 +10,16 @@ class AdminController {
                 email,
                 password,
             });
+	    	
+		await newAdminUser.save();
 
-            await newAdminUser.save();
-
-            if(newAdminUser) {
-                return res.redirect('/');
-            } else {
-                return res.redirect('/register');
-            }
-
+	    if(newAdminUser) {
+		return res.redirect('/');
+	    } else {
+		return res.redirect('/register');
+	    }
+	    
+	    
         } catch(err) {
             return res
                     .status(400)
