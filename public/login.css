@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #2A9DF4;
+    background-color: #303237;
 }
 
 .container {
@@ -21,7 +21,7 @@ body {
 
 .form {
     background-color: #FFFFFF;
-    border-radius: 25px;
+    border-radius: 5px;
     width:300px;
     height: 360px;
     box-shadow: 0 9px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
@@ -36,22 +36,26 @@ body {
 
 label {
     margin-top: 5px;
-    text-align: center;
+    margin-left: 44px;
     font-weight: bold;
-    font-size: 20px;
-    color: #2a9df4;
+    font-size: 14px;
+    color: #303237;
     margin-bottom: 1px;
 
 }
+
 
 .login-title{
     height: 70px;
     margin-top: 10px;
     text-align: center;
+    letter-spacing: 3px;
     font-size: 40px;
-    color: #2a9df4;
+    color: #303237;
     align-self: center;
 }
+
+
 
 .input-login {
     border-radius: 5px;
@@ -84,16 +88,15 @@ button {
     width: 225px;
     font-weight: bold;
     color: #ffffff;
-    background-color: #2a9df4;
+    background-color: #303237;
     border-radius: 10px;
 }
 
 button:hover {
     transition: 0.3s;
-    background-color: #ffffff;
-    color: #2a9df4;
+    background-color: #585b66;
+    color: #ffffff;
     cursor: pointer;
-     border: 1px solid #2a9df4;
 }
 
 .login-error {

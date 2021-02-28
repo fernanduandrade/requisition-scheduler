@@ -7,16 +7,7 @@
 }
 
 body {
-    background-color: #2A9DF4;
-}
-
-.container {
-    height: 100vh;
-    padding: 0;
-    display: flex;
-    flex-wrap: nowrapP;
-    justify-content: center;
-    align-items: center;
+    background-color: #303237;
 }
 
 .form {
@@ -34,24 +25,6 @@ body {
   flex-direction: column;
 }
 
-label {
-    margin-top: 2px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 20px;
-    color: #2a9df4;
-    margin-bottom: 1px;
-
-}
-
-.login-title{
-    height: 60px;
-    margin-top: 10px;
-    text-align: center;
-    font-size: 20px;
-    color: #2a9df4;
-    align-self: center;
-}
 
 .input-login {
     border-radius: 5px;
@@ -76,41 +49,12 @@ label {
     border: 1px solid rgba(81, 203, 238, 1);
 }
 
-button {
-    border: 1px solid #DDDDDD;
-    outline: none;
-    height: 40px;
-    align-self: center;
-    width: 225px;
-    font-weight: bold;
-    color: #ffffff;
-    background-color: #2a9df4;
-    border-radius: 10px;
-}
-
-button:hover {
-    transition: 0.3s;
-    background-color: #ffffff;
-    color: #2a9df4;
-    cursor: pointer;
-     border: 1px solid #2a9df4;
-}
 
 .login-error {
     margin-top: 10px;
     align-self: center;
     color: red;
     font-weight: bold;
-}
-
-* {
-    padding: 0;
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    background-color: #2a9df4;
 }
 
 .container {
@@ -124,7 +68,7 @@ body {
 
 .form {
     background-color: #ffffff;
-    border-radius: 25px;
+    border-radius: 5px;
     width:300px;
     height: 440px;
     box-shadow: 0 9px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
@@ -138,11 +82,11 @@ body {
 }
 
 label {
-    text-align: center;
+    padding-left: 40px;
     font-weight: bold;
-    font-size: 20px;
-    color: #2a9df4;
-    margin-bottom: 5px;
+    font-size: 14px;
+    color: #303237;
+    margin-top: 5px;
 
 }
 
@@ -150,8 +94,9 @@ label {
     height: 40px;
     margin-top: 10px;
     text-align: center;
+    letter-spacing: 1px;
     font-size: 30px;
-    color: #2a9df4;
+    color: #303237;
     align-self: center;
 }
 
@@ -180,22 +125,22 @@ label {
 
 
 .input-submit {
+    border: 1px solid #DDDDDD;
+    outline: none;
     height: 50px;
     align-self: center;
     width: 225px;
     font-weight: bold;
     color: #ffffff;
-    background-color: #2a9df4;
+    background-color: #303237;
     border-radius: 10px;
-    border: none;
 }
 
 .input-submit:hover {
-    transition: 0.2s;
-    background-color: #ffffff;
-    color: #2a9df4;
+    transition: 0.3s;
+    background-color: #585b66;
+    color: #ffffff;
     cursor: pointer;
-    border: 2px solid #2a9df4;
 }
 
 #message {

@@ -19,8 +19,8 @@ class RequisitionService {
 
 			const {page = 1, limit = 5} = req.query;
 			const requisitions = await Requisition.find()
-			.limit(limit * 1)
-			.skip((page - 1) * limit);
+				.limit(limit * 1)
+				.skip((page - 1) * limit);
 
 			const totalRegister = await Requisition.find({'examFinished': false}).countDocuments();
 			return res.render('listRequisition', {requisitions, totalRegister});

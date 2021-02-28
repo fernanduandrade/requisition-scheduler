@@ -17,8 +17,8 @@ const adminSchema = new Schema({
     },
 }, {timestamps: true});
 
-adminSchema.pre("save", function(next) {
-    this.password = bcrypt.hashSync(this.password, 10);
+adminSchema.pre("save", async function(next) {
+    this.password = await bcrypt.hashSync(this.password, 10);
     next();
 })
 

@@ -20,12 +20,13 @@
 
 			
 			<label for="password">SENHA</label>
-			<input class="input-register"  type="password" name="password" id="password" onkeyup='check();' required>
+			<input class="input-register"  type="password" name="password" id="password" required>
 
 			<label for="password">CONFIRMAR SENHA</label>
-			<input class="input-register"  type="password" name="confirmPassword" id="confirmPassword" onkeyup='check();' required>
-			<span id="message"></span>
+			<input class="input-register"  type="password" name="confirmPassword" id="confirmPassword" required>
+			
 			<br>
+			
 			<input class="input-submit" type="submit" value="CADASTRAR" />
 			</div>
 		</form>
@@ -43,22 +44,11 @@
 				disabled = true
 			}
 		})
-		if (disabled) {
+		if (disabled ) {
 			register.setAttribute('disabled', 'disabled')
 		} else {
 			register.removeAttribute('disabled')
 		}
 	})
-
-	let check = function() {
-	    if (document.getElementById('password').value == document.getElementById('confirmPassword').value) {
-         	document.getElementById('message').style.color = 'green';
-	        document.getElementById('message').innerHTML = 'Senhas correspondem';
-	    } else {
-	        document.getElementById('message').style.color = 'red';
-	        document.getElementById('message').innerHTML = 'Senhas não correspondem';
-	    }
-	}
-
 </script>
 </html>
