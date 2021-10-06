@@ -1,5 +1,7 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
+
+const { Schema }  = mongoose;
 
 const adminSchema = new Schema({
     name: {

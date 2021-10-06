@@ -1,4 +1,4 @@
-import { Requisition } from '../model/Requisition';
+import { Requisition } from '../model/Requisition.js';
 import RequisitionFactory from '../factories/RequisitionFactory.js';
 
 class RequisitionService {

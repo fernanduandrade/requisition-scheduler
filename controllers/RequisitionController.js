@@ -1,15 +1,16 @@
-import { Requisition } from '../model/Requisition';
+import { Requisition } from '../model/Requisition.js';
 
 class RequisitionController {
     async create(req, res) {
 
-        const { name, phone, date, location, exam } = req.body;
+        const { name, phone, date, hour, location, exam } = req.body;
     
         try {
             const newRequisition = new Requisition({
                 name,
                 phone,
                 date,
+                hour,
                 location,
                 exam,
                 examFinished: false
@@ -28,9 +29,9 @@ class RequisitionController {
 
     async update(req, res) {
 
-        const {_id, name, phone, date, location, exam} = req.body;
+        const {_id, name, phone, date, hour, location, exam} = req.body;
 
-	    const currentValues = {name, phone, date, location, exam}
+	    const currentValues = {name, phone, date, hour, location, exam}
             
         try {
 

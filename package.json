@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js",
-    "server": "nodemon --exec babel-node ./index.js"
+    "dev": "nodemon --exec babel-node ./index.js"
   },
   "keywords": [],
   "author": "",
@@ -29,5 +29,6 @@
     "mongoose": "^5.11.11",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
-  }
+  },
+  "type": "module"
 }

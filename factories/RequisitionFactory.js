@@ -6,7 +6,7 @@ class RequisitionFactory {
 
 		let requisition = {
 			id: appointmentUser._id,
-			title: appointmentUser.name,
+			title: `${appointmentUser.hour} - ${appointmentUser.name}`,
 			start: appointmentUser.date,
 			end: appointmentUser.date
 		}

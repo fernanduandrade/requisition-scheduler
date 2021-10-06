@@ -4,13 +4,13 @@ import session  from 'express-session';
 import morgan from 'morgan';
 
 import passport from 'passport';
-import passConfig from './middleware/passportConfig';
+import passConfig from './middleware/passportConfig.js';
 
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
-import Datebase from './database/connection';
-import router from './router/router';
+import Datebase from './database/connection.js';
+import router from './router/router.js';
 
 import dotenv from 'dotenv';
 dotenv.config();

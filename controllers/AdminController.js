@@ -1,4 +1,4 @@
-import { Admin } from '../model/Admin';
+import { Admin } from '../model/Admin.js';
 class AdminController {
     async create(req, res) {
 

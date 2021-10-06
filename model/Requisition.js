@@ -1,4 +1,7 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose from 'mongoose';
+
+const { Schema }  = mongoose;
+
 
 const requisitionSchema = new Schema({
     name: {
@@ -10,6 +13,10 @@ const requisitionSchema = new Schema({
         required: true
     },
     date: {
+        type: String,
+        required: true
+    },
+    hour: {
         type: String,
         required: true
     },

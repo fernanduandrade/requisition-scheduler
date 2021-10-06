@@ -1,8 +1,8 @@
 import {Router} from 'express';
-import RequisitionController from '../controllers/RequisitionController';
-import AdminController from '../controllers/AdminController';
+import RequisitionController from '../controllers/RequisitionController.js';
+import AdminController from '../controllers/AdminController.js';
 import RequisitionService from '../services/RequesitionService.js';
-import {checkNotAuthenticated, isAuthenticated} from '../middleware/authMiddleware';
+import {checkNotAuthenticated, isAuthenticated} from '../middleware/authMiddleware.js';
 import passport from 'passport';
 
 const router = Router();
