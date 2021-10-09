@@ -12,14 +12,12 @@
 <body>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-			<a class="navbar-brand text-white" href="/"><i class="fa fa-calendar"></i> EXAMES LIERADOS</a>
+			<a class="navbar-brand text-white" href="/"><i class="fa fa-calendar"></i> Sessões Agendadas</a>
 			<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span  class="navbar-toggler-icon">
 					<i class="fa fa-navicon" style="color:#fff; font-size: 28px;"></i>
 				</span>
-			</button>
-
-			<div" class="collapse navbar-collapse" id="navbarSupportedContent">
+			</button> navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active">
 						<a style="color: #ffffff;" class="nav-link" href="/"><i class="fa fa-home fa-fw mr-1"></i>Início<span class="sr-only">(current)</span></a>
@@ -44,8 +42,6 @@
 			<hr/>
 			<p><strong>	Telefone: <%= requisition.phone %></strong></p>
 			<hr>
-			<p><strong>Local do Exame: <%= requisition.location%></strong></p>
-			<p><strong>Procedimento: <%= requisition.exam%></strong></p>
 
 			<% if(requisition.examFinished == false) { %>
 			<button>Finalizar</button>

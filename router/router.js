@@ -12,7 +12,6 @@ router.get('/lista', isAuthenticated, RequisitionService.pagination);
 router.get('/pesquisarAgendado', isAuthenticated, RequisitionService.queryByDate);
 router.get('/paciente/:id', isAuthenticated, RequisitionService.index);
 router.get('/editar/:id', isAuthenticated, RequisitionService.editRequisition);
-
 router.get('/register', checkNotAuthenticated,(req, res) => {
 	res.render('registerUserAdmin');
 });

@@ -23,12 +23,15 @@ class RequisitionService {
 				.skip((page - 1) * limit);
 
 			const totalRegister = await Requisition.find({'examFinished': false}).countDocuments();
-			return res.render('listRequisition', {requisitions, totalRegister});
+			const pages = Math.ceil(totalRegister / limit); 
+			return res.render('listRequisition', {requisitions, totalRegister, pages});
 	
 		} catch(err) {
 			console.error(err);
 		}
 	}
+
+
 
 	async queryByDate(req, res) {
 		try {
@@ -36,7 +39,9 @@ class RequisitionService {
 			const query = req.query.search;
 			const totalRegister = await Requisition.find({'examFinished': false}).countDocuments();
 			const requisitions = await Requisition.find().or([{date: query}]);
-			res.render('listRequisition', {requisitions, totalRegister});
+			const pages = Math.ceil(totalRegister / 5);
+			console.log(query)
+			res.render('listRequisition', {requisitions, totalRegister, pages});
 
 		} catch(err) {
 			console.log(err.message);
@@ -94,7 +99,7 @@ class RequisitionService {
 
 			let requisition = await Requisition.find({'examFinished': false});
 			let requisitions = [];
-
+			
 			requisition.forEach(req => {
 				if(req.date != undefined) {
 					requisitions.push(RequisitionFactory.Build(req));

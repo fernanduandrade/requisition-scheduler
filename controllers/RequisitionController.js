@@ -3,7 +3,7 @@ import { Requisition } from '../model/Requisition.js';
 class RequisitionController {
     async create(req, res) {
 
-        const { name, phone, date, hour, location, exam } = req.body;
+        const { name, phone, date, hour } = req.body;
     
         try {
             const newRequisition = new Requisition({
@@ -11,9 +11,8 @@ class RequisitionController {
                 phone,
                 date,
                 hour,
-                location,
-                exam,
-                examFinished: false
+                examFinished: false,
+                finishedSession: false
             });
 
             await newRequisition.save();
@@ -29,9 +28,9 @@ class RequisitionController {
 
     async update(req, res) {
 
-        const {_id, name, phone, date, hour, location, exam} = req.body;
+        const {_id, name, phone, date, hour} = req.body;
 
-	    const currentValues = {name, phone, date, hour, location, exam}
+	    const currentValues = {name, phone, date, hour}
             
         try {
 

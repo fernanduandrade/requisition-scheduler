@@ -13,27 +13,21 @@ const requisitionSchema = new Schema({
         required: true
     },
     date: {
-        type: String,
+        type: Date,
         required: true
     },
     hour: {
         type: String,
         required: true
     },
-    location: {
-        type: String,
-        required: true
-    },
-    exam: {
-        type: String,
-        required: false
-    },
     examFinished: {
         type: Boolean,
         required: false
     },
-    password: String,
-    email: String
+    finishedSession: {
+        type: Boolean,
+        required: false
+    }
 }, {timestamps: true});
 
 export const Requisition = mongoose.model('Requisition', requisitionSchema);

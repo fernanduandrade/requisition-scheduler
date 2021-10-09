@@ -15,7 +15,7 @@
 <body>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-			<a class="navbar-brand text-white" href="/"><i class="fa fa-calendar"></i> EXAMES LIERADOS</a>
+			<a class="navbar-brand text-white" href="/"><i class="fa fa-calendar"></i> Sessões Agendadas</a>
 			<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span  class="navbar-toggler-icon">
 					<i class="fa fa-navicon" style="color:#fff; font-size: 28px;"></i>
@@ -48,7 +48,7 @@
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row query">
-                    <div class="col-sm-8"><h2>Lista de exames <b>Liberados</b></h2></div>
+                    <div class="col-sm-8"><h2>Lista de sessões agendadas</h2></div>
                     <div class="col-sm-4">
                         <div class="search-box">
                             <i class="material-icons">&#xE8B6;</i>
@@ -65,8 +65,6 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Procedimento</th>
-                        <th>Local</th>
                         <th>Data</th>
                         <th class="actions">Ações</th>
                     </tr>
@@ -75,9 +73,7 @@
                 	<% requisitions.forEach(requisition => { %>
 	                    <tr>
 	                        <td><%= requisition.name %></td>
-	                        <td><%= requisition.exam %></td>
-	                        <td><%= requisition.location %></td>
-	                        <td id="data"><%= requisition.date %></td>
+	                        <td id="data"><%= requisition.date.toLocaleDateString() %></td>
 	                        <td class="actions">
 	                            <a href="/paciente/<%= requisition._id %>" class="view" title="Ver" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
 	                            <a href="/editar/<%= requisition._id %>" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
@@ -90,11 +86,9 @@
             <div class="clearfix">
                 <div class="hint-text">Mostrando <b>5</b> de <strong><%= totalRegister %></strong> cadastros</div>
                 <ul class="pagination">
-                    <li class="page-item"><a href="/lista?page=1&limit=5" class="page-link">1</a></li>
-                    <li class="page-item"><a href="/lista?page=2&limit=5" class="page-link">2</a></li>
-                    <li class="page-item"><a href="/lista?page=3&limit=5" class="page-link">3</a></li>
-                    <li class="page-item"><a href="/lista?page=4&limit=5" class="page-link">4</a></li>
-                    <li class="page-item"><a href="/lista?page=5&limit=5" class="page-link">5</a></li>
+					<% for(let i=0; i < pages; i++) {%>
+						<li class="page-item"><a href="/lista?page=<%= i+1%>&limit=5" class="page-link"><%= i+1%></a></li>
+					<% } %>
                 </ul>
             </div>
         </div>
