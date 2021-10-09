@@ -1,5 +1,6 @@
 import { Requisition } from '../model/Requisition.js';
 import RequisitionFactory from '../factories/RequisitionFactory.js';
+import nodemailer from 'nodemailer';
 
 class RequisitionService {
 	async GetRequisitionById(id) {
@@ -73,10 +74,13 @@ class RequisitionService {
         
     }
 
-	async getTotalRegisters() {
+	async getTotalRegisters(showFinished) {
 		try {
+			if(showFinished) {
+				return await Requisition.find();
+			}
 
-			let result = await Requisition.find({'examFinished': false}).countDocuments();
+			let result = await Requisition.find({'examFinished': showFinished});
 			return result;
 
 		} catch(err) {
@@ -110,6 +114,47 @@ class RequisitionService {
 		} catch(err) {
 			console.log(err.message);
 		}
+	}
+
+	async sendNotification() {
+		const records = await this.getTotalRegisters(false);
+
+		let sender = nodemailer.createTransport({
+			service: 'gmail', 
+			host: 'smtp.gmail.com',
+			auth: {
+				user: 'nando.andradi.2@gmail.com',
+				pass: "uvjxvybtovdxyhzn"
+			}	
+		});
+
+		console.log('\x1b[43m', 'Verificando agendas para hoje');
+
+		records.forEach(async record => {
+			let date = record.date.split('-').reverse().join('/');
+			let today = new Date();
+
+			if(today.toLocaleDateString('pt-BR') === date) {
+				if(!record.notified) {
+					sender.sendMail({
+						from: 'nando.andradi.2@gmail.com',
+						to: record.email,
+						subject: `${record.name} sua sessão de tatuagem é hoje!`,
+						text: `Olá ${record.name}, você tem uma sessão de tatuagem marcada para às ${record.hour} hoje! Não esqueça  ;)`
+
+					}).then(response => {
+						// console.log(response);
+					}).catch(err => console.log(err));
+
+					await Requisition.findByIdAndUpdate(record.id, {notified: true}, {new: true, useFindAndModify: false});
+					
+					console.log('\x1b[42m',`email enviado para ${record.name}`)
+				}
+			} else {
+				console.log('\x1b[41m','Não há agenda para hoje!')
+			}
+		});
+
 	}
 }	
 

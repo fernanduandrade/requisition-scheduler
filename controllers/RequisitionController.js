@@ -3,15 +3,17 @@ import { Requisition } from '../model/Requisition.js';
 class RequisitionController {
     async create(req, res) {
 
-        const { name, phone, date, hour } = req.body;
-    
+        const { name, phone, email, date, hour } = req.body;
+        
         try {
             const newRequisition = new Requisition({
                 name,
+                email,
                 phone,
                 date,
                 hour,
                 examFinished: false,
+                notified: false,
                 finishedSession: false
             });
 

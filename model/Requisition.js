@@ -12,8 +12,12 @@ const requisitionSchema = new Schema({
         type: String,
         required: true
     },
+    email: {
+        type: String,
+        required: false
+    },
     date: {
-        type: Date,
+        type: String,
         required: true
     },
     hour: {
@@ -25,6 +29,10 @@ const requisitionSchema = new Schema({
         required: false
     },
     finishedSession: {
+        type: Boolean,
+        required: false
+    },
+    notified: {
         type: Boolean,
         required: false
     }

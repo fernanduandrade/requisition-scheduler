@@ -73,7 +73,7 @@
                 	<% requisitions.forEach(requisition => { %>
 	                    <tr>
 	                        <td><%= requisition.name %></td>
-	                        <td id="data"><%= requisition.date.toLocaleDateString() %></td>
+	                        <td id="data"><%= requisition.date %></td>
 	                        <td class="actions">
 	                            <a href="/paciente/<%= requisition._id %>" class="view" title="Ver" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
 	                            <a href="/editar/<%= requisition._id %>" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
