@@ -1,9 +1,9 @@
 <h1 align="center">
-  Requisition Control 
+  Requisition Controller 
 </h1>
 
 <h3 align="center">
-    Uma aplicação para controle de agendamento de consultas
+    Uma aplicação para controle de agendamento
 </h3> 
 
 ## :heart: Como usar
