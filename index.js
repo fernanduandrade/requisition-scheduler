@@ -47,8 +47,8 @@ app.listen(PORT, () => {
 	console.log(`Servidor rodando na porta ${PORT}`);
 });
 
-const pollTime = 12 * 60 * 60000;
+const pollTime = 8 * 60 * 60000;
 
 setInterval(async () => {
 	await RequisitionService.sendNotification();
-}, 10000)
+}, pollTime)

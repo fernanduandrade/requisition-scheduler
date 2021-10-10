@@ -13,11 +13,14 @@
 npm install
 ```
 
-## :computer: Criei um arquivo `.env` e defina as suas variáveis de ambiente:
+## :computer: Criei um arquivo `.env` e defina as suas variáveis de ambiente, como no arquivo de exemplo `.env.sample`:
 
 ```
-PORT={SUAPORTA}
-SESSION_SECRET={SUASESSIONSECRET}
+SESSION_SECRET_KEY={SUASENHAPARASESSÃO}
+PORT={PORTA}
+EMAIL_PASSWORD={SENHADEAUTENTICACAODOEMAIL}
+EMAIL_USER={SUAEMAIL}
+
 ```
 
 ## :computer: Rode o servidor
