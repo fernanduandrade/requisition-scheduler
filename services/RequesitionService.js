@@ -145,11 +145,10 @@ class RequisitionService {
 			if(today.toLocaleDateString('pt-BR') === date) {
 				if(record.notified) {
 					sender.sendMail({
-						from: 'nando.andradi.2@gmail.com',
+						from: 'Gilson Visgueira <nando.andradi.2@gmail.com>',
 						to: record.email,
 						subject: `${record.name} sua sessão de tatuagem é hoje!`,
-						htmlTemplate: data,
-						
+						html: data
 
 					}).then(response => {
 						console.log(`email enviado para ${record.name}`)
@@ -159,7 +158,7 @@ class RequisitionService {
 
 				}
 			} else {
-				console.log('Não há agenda para hoje!')
+				console.log(`${record.name} será notificado no dia ${date}`)
 			}
 		});
 
