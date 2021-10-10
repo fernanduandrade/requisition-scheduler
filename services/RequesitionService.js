@@ -1,6 +1,9 @@
 import { Requisition } from '../model/Requisition.js';
 import RequisitionFactory from '../factories/RequisitionFactory.js';
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 class RequisitionService {
 	async GetRequisitionById(id) {
@@ -23,7 +26,7 @@ class RequisitionService {
 				.limit(limit * 1)
 				.skip((page - 1) * limit);
 
-			const totalRegister = await Requisition.find({'examFinished': false}).countDocuments();
+			const totalRegister = await Requisition.find({'finishedSession': false}).countDocuments();
 			const pages = Math.ceil(totalRegister / limit); 
 			return res.render('listRequisition', {requisitions, totalRegister, pages});
 	
@@ -38,7 +41,7 @@ class RequisitionService {
 		try {
 
 			const query = req.query.search;
-			const totalRegister = await Requisition.find({'examFinished': false}).countDocuments();
+			const totalRegister = await Requisition.find({'finishedSession': false}).countDocuments();
 			const requisitions = await Requisition.find().or([{date: query}]);
 			const pages = Math.ceil(totalRegister / 5);
 			console.log(query)
@@ -80,7 +83,7 @@ class RequisitionService {
 				return await Requisition.find();
 			}
 
-			let result = await Requisition.find({'examFinished': showFinished});
+			let result = await Requisition.find({'finishedSession': showFinished});
 			return result;
 
 		} catch(err) {
@@ -101,7 +104,7 @@ class RequisitionService {
 	async listAppointment(req, res) {
 		try {
 
-			let requisition = await Requisition.find({'examFinished': false});
+			let requisition = await Requisition.find({'finishedSession': false});
 			let requisitions = [];
 			
 			requisition.forEach(req => {
@@ -123,12 +126,12 @@ class RequisitionService {
 			service: 'gmail', 
 			host: 'smtp.gmail.com',
 			auth: {
-				user: 'nando.andradi.2@gmail.com',
-				pass: "uvjxvybtovdxyhzn"
+				user: process.env.EMAIL_USER,
+				pass: process.env.EMAIL_PASSWORD
 			}	
 		});
 
-		console.log('\x1b[43m', 'Verificando agendas para hoje');
+		console.log('Verificando agendas para hoje');
 
 		records.forEach(async record => {
 			let date = record.date.split('-').reverse().join('/');
@@ -148,10 +151,10 @@ class RequisitionService {
 
 					await Requisition.findByIdAndUpdate(record.id, {notified: true}, {new: true, useFindAndModify: false});
 					
-					console.log('\x1b[42m',`email enviado para ${record.name}`)
+					console.log(`email enviado para ${record.name}`)
 				}
 			} else {
-				console.log('\x1b[41m','Não há agenda para hoje!')
+				console.log('Não há agenda para hoje!')
 			}
 		});
 

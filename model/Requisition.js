@@ -24,10 +24,6 @@ const requisitionSchema = new Schema({
         type: String,
         required: true
     },
-    examFinished: {
-        type: Boolean,
-        required: false
-    },
     finishedSession: {
         type: Boolean,
         required: false

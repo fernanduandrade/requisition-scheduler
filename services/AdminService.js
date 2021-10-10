@@ -3,10 +3,8 @@ import { Admin } from '../model/Admin.js';
 class AdminService {
     async getByName(name) {
 		
-		try {
-
-			const result = await Admin.findOne({'name': name});
-			return result;
+		try { 
+			return await Admin.findOne({'name': name});
 		
 		} catch(error) {
 			console.error(error.messsage);

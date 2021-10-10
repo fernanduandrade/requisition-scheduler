@@ -12,7 +12,6 @@ class RequisitionController {
                 phone,
                 date,
                 hour,
-                examFinished: false,
                 notified: false,
                 finishedSession: false
             });

@@ -14,9 +14,9 @@ class AdminController {
 		await newAdminUser.save();
 
 	    if(newAdminUser) {
-		return res.redirect('/');
+		    return res.redirect('/');
 	    } else {
-		return res.redirect('/register');
+		    return res.redirect('/register');
 	    }
 	    
 	    

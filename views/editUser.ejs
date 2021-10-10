@@ -43,13 +43,13 @@
 
 	<div class="form container " style="background-color: #ffffff; border-radius: 20px; height: 72vh; padding-top: 20px;">
 		<form method="POST" action="/editar">
-			<strong><label for="name">Nome do Paciente</label></strong>
-			<input class="form-control" type="text" name="name"  id="name" placeholder="Nome do paciente" value="<%= requisition.name%>" required>
+			<strong><label for="name">Nome</label></strong>
+			<input class="form-control" type="text" name="name"  id="name" placeholder="Antônia" value="<%= requisition.name%>" required>
 
 			<strong><label for="phone">Celular</label></strong>
 			<input class="form-control phone" type="tel" name="phone" id="phone" placeholder="(00)00000-0000" value="<%= requisition.phone%>" required>
 
-			<strong><label for="phone">Email</label></strong>
+			<strong><label for="email">Email</label></strong>
 			<input class="form-control" type="email" name="email" id="email">
 
 			<strong><label for="date">Dia da Consulta</label></strong>
