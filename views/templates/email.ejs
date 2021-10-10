@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,100;1,300&display=swap" rel="stylesheet">
+    <title>Tatuagem</title>
+</head>
+<style>
+    * {
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+    }
+
+    body {
+        background-color: #ffffff;
+    }
+
+    .purple-title {
+        color: #916BBF;
+        font-size: 14px;
+    }
+
+    .link {
+        color: #128C7E;
+        text-decoration: none;
+        font-size: 10px;
+    }
+
+</style>
+<body>
+    <p class="purple-title">Olá <%= name %></p>
+    <p>Você tem uma sessão de tatuagem marcada às <strong><%= hour %></strong> de hoje 😁!!</p>
+   
+    <p>
+        Qualquer dúvida me manda uma menssagem no whatapp 
+        <a class="link" href="https://api.whatsapp.com/send?phone=+5586810798737"><strong>clicando aqui<a/></strong> e até logo 😉.</p>
+    </p>
+
+    <br>
+
+    <img src="cid:https://tenor.com/view/michael-scott-wink-yes-%E0%A4%86%E0%A4%81%E0%A4%96-%E0%A4%AE%E0%A4%BE%E0%A4%B0%E0%A4%A8%E0%A4%BE-gif-5795910"/>
+</body>
+</html>

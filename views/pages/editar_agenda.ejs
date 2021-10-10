@@ -12,7 +12,7 @@
 </head>
 
 <header>
-	<%- include('./partials/header'); %>
+	<%- include('../partials/header'); %>
 </header>
 
 <body>
@@ -20,7 +20,7 @@
 	<br />
 
 	<div class="form container " style="background-color: #ffffff; border-radius: 20px; height: 72vh; padding-top: 20px;">
-		<form method="POST" action="/editar">
+		<form method="POST" action="/editar_agenda">
 			<strong><label for="name">Nome</label></strong>
 			<input class="form-control" type="text" name="name"  id="name" placeholder="Antônia" value="<%= requisition.name%>" required>
 

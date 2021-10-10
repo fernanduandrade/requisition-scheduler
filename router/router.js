@@ -9,19 +9,17 @@ const router = Router();
 
 router.get('/agendados', isAuthenticated, RequisitionService.listAppointment);
 router.get('/lista', isAuthenticated, RequisitionService.pagination);
-router.get('/pesquisarAgendado', isAuthenticated, RequisitionService.queryByDate);
-router.get('/paciente/:id', isAuthenticated, RequisitionService.index);
-router.get('/editar/:id', isAuthenticated, RequisitionService.editRequisition);
-router.get('/register', checkNotAuthenticated,(req, res) => {
-	res.render('registerUserAdmin');
-});
+router.get('/pesquisar_agendado', isAuthenticated, RequisitionService.queryByDate);
+router.get('/agenda_registrada/:id', isAuthenticated, RequisitionService.index);
+router.get('/editar_agenda/:id', isAuthenticated, RequisitionService.editRequisition);
+router.get('/registrar_admin', checkNotAuthenticated,(req, res) => res.render('./pages/admin/register_admin'));
 
-router.get('/cadastro', isAuthenticated, (req, res) => {
-	res.render('registerRequisition');
+router.get('/cadastrar_agenda', isAuthenticated, (req, res) => {
+	res.render('./pages/cadastrar_agenda');
 });
 
 router.get('/login', checkNotAuthenticated, (req, res) => {
-	res.render('login');
+	res.render('./pages/login/login');
 });
 
 router.get('/logout', (req, res) => {
@@ -30,7 +28,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/', isAuthenticated,(req, res) => {
-	res.render('index.ejs');
+	res.render('./pages/home.ejs');
 });
 
 router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
@@ -38,9 +36,9 @@ router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 	failureRedirect:'/login', 
 	failureFlash: 'Usuário ou senha inválido',
 }));
-router.post('/cadastro', isAuthenticated, RequisitionController.create);
-router.post('/register', checkNotAuthenticated, AdminController.create);
-router.post('/editar', isAuthenticated, RequisitionController.update);
-router.get('/usuario/:id', isAuthenticated, RequisitionController.delete);
+router.post('/registrar_agenda', isAuthenticated, RequisitionController.create);
+router.post('/registrar_admin', checkNotAuthenticated, AdminController.create);
+router.post('/editar_agenda', isAuthenticated, RequisitionController.update);
+router.get('/deletar_agenda/:id', isAuthenticated, RequisitionController.delete);
 
 export default router;

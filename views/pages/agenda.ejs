@@ -14,8 +14,8 @@
 </head>
 
 <header>
-	<%- include('./partials/header'); %>
-</header>
+	<%- include('../partials/header'); %>
+</header.>
 
 <body>
 	<div class="container-xl">
@@ -28,7 +28,7 @@
                         <div class="search-box">
                             <i class="material-icons">&#xE8B6;</i>
 
-                            <form action="/pesquisarAgendado" method="GET" id="formId">
+                            <form action="/pesquisar_agendado" method="GET" id="formId">
                             	<input type="date" name="search" class="form-control dataInput" id="datepicker"placeholder="dd/mm/aaaa">
                             </form>
 
@@ -50,9 +50,9 @@
 	                        <td><%= requisition.name %></td>
 	                        <td id="data"><%= requisition.date %></td>
 	                        <td class="actions">
-	                            <a href="/paciente/<%= requisition._id %>" class="view" title="Ver" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-	                            <a href="/editar/<%= requisition._id %>" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-	                            <a href="/usuario/<%= requisition._id %>" onclick="return confirm('Tem certeza que deseja excluir?');" class="delete" title="Deletar" data-toggle="tooltip"><i class="material-icons" style="color:red">delete</i></a>
+	                            <a href="/agenda_registrada/<%= requisition._id %>" class="view" title="Ver" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+	                            <a href="/editar_agenda/<%= requisition._id %>" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+	                            <a href="/agenda_registrada/<%= requisition._id %>" onclick="return confirm('Tem certeza que deseja excluir?');" class="delete" title="Deletar" data-toggle="tooltip"><i class="material-icons" style="color:red">delete</i></a>
 	                        </td>
 	                    </tr>
                     <% }) %>

@@ -51,4 +51,4 @@ const pollTime = 12 * 60 * 60000;
 
 setInterval(async () => {
 	await RequisitionService.sendNotification();
-}, pollTime)
+}, 10000)

@@ -1,7 +1,10 @@
 import { Requisition } from '../model/Requisition.js';
 import RequisitionFactory from '../factories/RequisitionFactory.js';
 import nodemailer from 'nodemailer';
+import htmlTemplate from '../utils/htmlTemplate.js';
 import dotenv from 'dotenv';
+import ejs from 'ejs';
+import fs from 'fs';
 
 dotenv.config();
 
@@ -28,7 +31,7 @@ class RequisitionService {
 
 			const totalRegister = await Requisition.find({'finishedSession': false}).countDocuments();
 			const pages = Math.ceil(totalRegister / limit); 
-			return res.render('listRequisition', {requisitions, totalRegister, pages});
+			return res.render('./pages/agenda', {requisitions, totalRegister, pages});
 	
 		} catch(err) {
 			console.error(err);
@@ -45,7 +48,7 @@ class RequisitionService {
 			const requisitions = await Requisition.find().or([{date: query}]);
 			const pages = Math.ceil(totalRegister / 5);
 			console.log(query)
-			res.render('listRequisition', {requisitions, totalRegister, pages});
+			res.render('./pages/agenda', {requisitions, totalRegister, pages});
 
 		} catch(err) {
 			console.log(err.message);
@@ -70,7 +73,7 @@ class RequisitionService {
         try {
             const id = req.params.id;
             const requisition = await Requisition.findById(id);
-            return res.render('userRequisition', {requisition});
+            return res.render('./pages/agenda_cadastrada', {requisition});
         } catch(err) {
             console.log(err.message);
         }
@@ -95,7 +98,7 @@ class RequisitionService {
 		try {
 			const id = req.params.id;
 			const requisition = await Requisition.findById(id);
-			res.render('editUser', {requisition});
+			res.render('./pages/editar_agenda', {requisition});
 		} catch(err) {
 			console.log(err.message);
 		}
@@ -137,21 +140,23 @@ class RequisitionService {
 			let date = record.date.split('-').reverse().join('/');
 			let today = new Date();
 
+			const data = await ejs.renderFile('./views/templates/email.ejs', {name: record.name, hour: record.hour});
+	
 			if(today.toLocaleDateString('pt-BR') === date) {
-				if(!record.notified) {
+				if(record.notified) {
 					sender.sendMail({
 						from: 'nando.andradi.2@gmail.com',
 						to: record.email,
 						subject: `${record.name} sua sessão de tatuagem é hoje!`,
-						text: `Olá ${record.name}, você tem uma sessão de tatuagem marcada para às ${record.hour} hoje! Não esqueça  ;)`
+						htmlTemplate: data,
+						
 
 					}).then(response => {
-						// console.log(response);
+						console.log(`email enviado para ${record.name}`)
 					}).catch(err => console.log(err));
 
 					await Requisition.findByIdAndUpdate(record.id, {notified: true}, {new: true, useFindAndModify: false});
-					
-					console.log(`email enviado para ${record.name}`)
+
 				}
 			} else {
 				console.log('Não há agenda para hoje!')
