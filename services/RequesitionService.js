@@ -1,10 +1,8 @@
 import { Requisition } from '../model/Requisition.js';
 import RequisitionFactory from '../factories/RequisitionFactory.js';
 import nodemailer from 'nodemailer';
-import htmlTemplate from '../utils/htmlTemplate.js';
 import dotenv from 'dotenv';
 import ejs from 'ejs';
-import fs from 'fs';
 
 dotenv.config();
 

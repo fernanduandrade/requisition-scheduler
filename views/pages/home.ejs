@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="main.css">
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<title>Requisições</title>
+	<%- include('../partials/head', {title: 'Home'}); %>
 </head>
 
 <header>
@@ -27,12 +19,14 @@
 	<footer>
 	</footer>
 </body>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="main.js"></script>
 <script>
-	let calendario= document.getElementById('calendar');
-	let calendar = new FullCalendar.Calendar(calendario, {
+	const calendario= document.getElementById('calendar');
+	
+	const calendar = new FullCalendar.Calendar(calendario, {
 		displayEventTime : false,
 		initialView: 'dayGridMonth',
 		themeSystem: 'Sandstone',
@@ -42,22 +36,22 @@
 			window.location.href = '/agenda_registrada/'+req.event.id
 		},
 	        eventAfterRender: function (event, $element, view) {
-	var $container = $element.parents('.fc-content-skeleton:first').find('.fc-event-container:last');
-	var $totalRow = $container.find('.fc-day-grid-event.total');
-	if ($totalRow.length == 0) {
-        $totalRow = $('<a class="fc-day-grid-event total fc-h-event fc-event fc-start fc-end"><div class="fc-content"><span>Total: </span><span class="total-time"></span></div></a>')
-        .appendTo($container);
-	}
-	var $total = $totalRow.find('.total-time');
-	var total = parseFloat($totalRow.find('.total-time').text());
-	total = isNaN(total) ? parseFloat(event.worktime) : total + parseFloat(event.worktime);
-	$total.text(total);
+		const $container = $element.parents('.fc-content-skeleton:first').find('.fc-event-container:last');
+		const $totalRow = $container.find('.fc-day-grid-event.total');
+		if ($totalRow.length == 0) {
+			$totalRow = $('<a class="fc-day-grid-event total fc-h-event fc-event fc-start fc-end"><div class="fc-content"><span>Total: </span><span class="total-time"></span></div></a>')
+			.appendTo($container);
+		}
+		const $total = $totalRow.find('.total-time');
+		const total = parseFloat($totalRow.find('.total-time').text());
+		total = isNaN(total) ? parseFloat(event.worktime) : total + parseFloat(event.worktime);
+		$total.text(total);
 }
 	});
 
 	calendar.render();
 
-	defaultView: (function () { if ($(window).width() <= 768) { return defaultView = 'agendaDay'; } else { return defaultView = 'agendaWeek'; } })()
+	// defaultView: (function () { if ($(window).width() <= 768) { return defaultView = 'agendaDay'; } else { return defaultView = 'agendaWeek'; } })()
 </script>
 
 </html>

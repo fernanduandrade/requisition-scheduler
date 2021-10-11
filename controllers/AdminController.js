@@ -11,13 +11,13 @@ class AdminController {
                 password,
             });
 	    	
-		await newAdminUser.save();
+            await newAdminUser.save();
 
-	    if(newAdminUser) {
-		    return res.redirect('/');
-	    } else {
-		    return res.redirect('/register');
-	    }
+            if(newAdminUser) {
+                return res.redirect('/');
+            } else {
+                return res.redirect('/register');
+            }
 	    
 	    
         } catch(err) {
