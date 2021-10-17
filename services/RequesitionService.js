@@ -23,13 +23,14 @@ class RequisitionService {
 		try {
 
 			const {page = 1, limit = 5} = req.query;
+			const currentPage = req.query.page;
 			const requisitions = await Requisition.find()
 				.limit(limit * 1)
 				.skip((page - 1) * limit);
 
 			const totalRegister = await Requisition.find({'finishedSession': false}).countDocuments();
 			const pages = Math.ceil(totalRegister / limit); 
-			return res.render('./pages/agenda', {requisitions, totalRegister, pages});
+			return res.render('./pages/agenda', {requisitions, totalRegister, pages, currentPage});
 	
 		} catch(err) {
 			console.error(err);
@@ -122,7 +123,7 @@ class RequisitionService {
 
 	async sendNotification() {
 		const records = await this.getTotalRegisters(false);
-
+		let today = new Date();
 		let sender = nodemailer.createTransport({
 			service: 'gmail', 
 			host: 'smtp.gmail.com',
@@ -132,16 +133,16 @@ class RequisitionService {
 			}	
 		});
 
-		console.log('Verificando agendas para hoje');
+		console.log(`Verificando agendas para hoje ${today}`);
 
 		records.forEach(async record => {
 			let date = record.date.split('-').reverse().join('/');
-			let today = new Date();
+			
 
 			const data = await ejs.renderFile('./views/templates/email.ejs', {name: record.name, hour: record.hour});
 	
 			if(today.toLocaleDateString('pt-BR') === date) {
-				if(record.notified) {
+				if(!record.notified) {
 					sender.sendMail({
 						from: 'Gilson Visgueira <nando.andradi.2@gmail.com>',
 						to: record.email,
@@ -149,14 +150,12 @@ class RequisitionService {
 						html: data
 
 					}).then(response => {
-						console.log(`email enviado para ${record.name}`)
+						console.log(`email enviado para ${record.name}, sessão às ${record.hour}`);
 					}).catch(err => console.log(err));
 
 					await Requisition.findByIdAndUpdate(record.id, {notified: true}, {new: true, useFindAndModify: false});
 
 				}
-			} else {
-				console.log(`${record.name} será notificado no dia ${date}`)
 			}
 		});
 

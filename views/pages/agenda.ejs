@@ -52,8 +52,15 @@
             <div class="clearfix">
                 <div class="hint-text">Mostrando <b>5</b> de <strong><%= totalRegister %></strong> cadastros</div>
                 <ul class="pagination">
-					<% for(let i=0; i < pages; i++) {%>
-						<li class="page-item"><a href="/lista?page=<%= i+1%>&limit=5" class="page-link"><%= i+1%></a></li>
+					<% for(let i = 1; i <= pages; i++) {%>
+						<li <%
+                            if (i == currentPage) 
+                                {%> class="page-item active" <%}
+                            else { %>
+                                class="page-item"
+                            <% } 
+                            %>
+                        ><a href="/lista?page=<%= i%>&limit=5" class="page-link"><%= i%></a></li>
 					<% } %>
                 </ul>
             </div>
@@ -75,10 +82,6 @@
         console.log('Submiting form');                
         $('#formId').submit();
     });
-
-    $(".page-item").click( function(){
-    	$(this).addClass("active");
-	});
 
 </script>
 
