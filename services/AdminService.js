@@ -7,7 +7,7 @@ class AdminService {
 			return await Admin.findOne({'name': name});
 		
 		} catch(error) {
-			console.error(error.messsage);
+			console.log(error);
 		} 	
 	}
 }
