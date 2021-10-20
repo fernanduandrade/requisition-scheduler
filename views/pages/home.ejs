@@ -4,9 +4,9 @@
 	<%- include('../partials/head', {title: 'Home'}); %>
 </head>
 
-<header>
+<!-- <header>
 	<%- include('../partials/header'); %>
-</header>
+</header> -->
 
 <body>
 	<div class="container">
@@ -39,7 +39,7 @@
 							<span>Home</span>
 						</a>
 					</li>
-					<li class="side-nav__item side-nav__item--active">
+					<li class="side-nav__item">
 						<a href="#" class="side-nav__link">
 							<span>Cadastrar</span>
 						</a>
@@ -61,14 +61,19 @@
 					</li>
 					<li class="side-nav__item">
 						<a href="#" class="side-nav__link">
+							<i class="side-nav__icon icon__logout color--white"></i>
 							<span>Sair</span>
 						</a>
 					</li>
 				</ul>
+
+				<div class="legal">
+					&copy; 2021 por Fernando Andrade. Todos direitos reservados.
+				</div>
 			</nav>
 		</div>
 
-		<div id="calendar"></div>
+		<!-- <div id="calendar"></div> -->
 	</div>
 </body>
 
