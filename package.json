@@ -11,7 +11,15 @@
     "dev": "npm-run-all --parallel server watch:main:sass",
     "test": "jest --detectOpenHandles --silent=false"
   },
-  "keywords": ["javascript", "ejs", "node", "mongodb", "express", "sass", "jest"],
+  "keywords": [
+    "javascript",
+    "ejs",
+    "node",
+    "mongodb",
+    "express",
+    "sass",
+    "jest"
+  ],
   "author": "Luiz Fernando Andrade Abreu",
   "license": "MIT",
   "devDependencies": {

@@ -2,112 +2,37 @@
 <html lang="pt-br">
 <head>
 	<%- include('../partials/head', {title: 'Home'}); %>
+	<link rel="stylesheet" href="./fullcalendar/main.css">
 </head>
-
-<!-- <header>
-	<%- include('../partials/header'); %>
-</header> -->
 
 <body>
 	<div class="container">
-		<header class="header">
-			<a href="/">
-				<img src="./img/logo.png" alt="project logo" class="logo">
-			</a>
-			
-	
-			<form action="#" class="search">
-				<input type="text" class="search__input" placeholder="Pesquisar dia ">
-				<button title="Botão" class="search__button">
-					<i class="icon__search color--grey"></i>
-				</button>
-			</form>
-
-			<nav class="user-nav">
-				<div class="user-nav__user">
-					<img src="img/user.jpg" alt="User profile photo" class="user-nav__user-photo">
-					<span class="user-nav__user-name">Fernando</span>
-				</div>
-			</nav>
-		</header>
-		
-		<div class="content">
-			<nav class="sidebar">
-				<ul class="side-nav">
-					<li class="side-nav__item side-nav__item--active">
-						<a href="#" class="side-nav__link">
-							<span>Home</span>
-						</a>
-					</li>
-					<li class="side-nav__item">
-						<a href="#" class="side-nav__link">
-							<span>Cadastrar</span>
-						</a>
-					</li>
-					<li class="side-nav__item">
-						<a href="#" class="side-nav__link">
-							<span>Todas agendas</span>
-						</a>
-					</li>
-					<li class="side-nav__item">
-						<a href="#" class="side-nav__link">
-							<span>Sessões do dia</span>
-						</a>
-					</li>
-					<li class="side-nav__item">
-						<a href="#" class="side-nav__link">
-							<span>Notificar</span>
-						</a>
-					</li>
-					<li class="side-nav__item">
-						<a href="#" class="side-nav__link">
-							<i class="side-nav__icon icon__logout color--white"></i>
-							<span>Sair</span>
-						</a>
-					</li>
-				</ul>
-
-				<div class="legal">
-					&copy; 2021 por Fernando Andrade. Todos direitos reservados.
-				</div>
-			</nav>
+		<%- include('../partials/header'); %>
+		<div class="main">
+			<%- include('../partials/sidebar'); %>
+			<div class="content">
+				<div id="calendar"></div>
+			</div>
 		</div>
-
-		<!-- <div id="calendar"></div> -->
 	</div>
 </body>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="main.js"></script>
+<script src="./fullcalendar/main.js"></script>
 <script>
-	const calendario= document.getElementById('calendar');
+	const calendario = document.getElementById('calendar');
 	
 	const calendar = new FullCalendar.Calendar(calendario, {
 		displayEventTime : false,
+		handleWindowResize: true,
 		initialView: 'dayGridMonth',
 		locale: 'pt-br',
 		events: 'agendados',
 		eventClick: function(req) {
 			window.location.href = '/agenda_registrada/'+req.event.id
 		},
-// 	        eventAfterRender: function (event, $element, view) {
-// 		const $container = $element.parents('.fc-content-skeleton:first').find('.fc-event-container:last');
-// 		const $totalRow = $container.find('.fc-day-grid-event.total');
-// 		if ($totalRow.length == 0) {
-// 			$totalRow = $('<a class="fc-day-grid-event total fc-h-event fc-event fc-start fc-end"><div class="fc-content"><span>Total: </span><span class="total-time"></span></div></a>')
-// 			.appendTo($container);
-// 		}
-// 		const $total = $totalRow.find('.total-time');
-// 		const total = parseFloat($totalRow.find('.total-time').text());
-// 		total = isNaN(total) ? parseFloat(event.worktime) : total + parseFloat(event.worktime);
-// 		$total.text(total);
-// }
 	});
 
 	calendar.render();
-
-	// defaultView: (function () { if ($(window).width() <= 768) { return defaultView = 'agendaDay'; } else { return defaultView = 'agendaWeek'; } })()
 </script>
 
 </html>

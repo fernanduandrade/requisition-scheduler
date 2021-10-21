@@ -4,52 +4,51 @@
 	<%- include('../partials/head', {title: 'Cadastrar Agenda'}); %>
 </head>
 
-<header>
-	<%- include('../partials/header'); %>
-</header>
-
 <body>
+	<div class="container">
+		<%- include('../partials/header'); %>
 
-	<br />
-
-	<div class="form container" style="background-color: #ffffff; border-radius: 5px; padding: 20px 10px 10px 10px;">
-		<form method="POST" action="/registrar_agenda">
-
-			<div class="form-group">
-				<strong><label for="name">Nome</label></strong>
-				<input class="form-control" type="text" name="name"  id="name" placeholder="Antônia" required>
-			</div>
-
-			<div class="form-group">
-				<strong><label for="phone">Celular</label></strong>
-				<input class="form-control phone" type="text" name="phone" placeholder="(00)00000-0000" id="phone" required>
-			</div>
-
-			<div class="form-group">
-				<strong><label for="email">Email</label></strong>
-				<input class="form-control" type="email" name="email" id="email">
-			</div>
+		<div class="main">
+			<%- include('../partials/sidebar'); %>
+			<div class="content">
+				<div class="form container" style="background-color: #ffffff; border-radius: 5px; padding: 20px 10px 10px 10px;">
+					<form method="POST" action="/registrar_agenda">
 			
-			<div class="form-group">
-				<strong><label for="date">Dia</label></strong>
-				<input class="form-control" type="date" id="date" name="date" required>
-			</div>
+						<div class="form-group">
+							<strong><label for="name">Nome</label></strong>
+							<input class="form-control" type="text" name="name"  id="name" placeholder="Antônia" required>
+						</div>
 			
-			<div class="form-group">
-				<strong><label for="hour">Hora</label></strong>
-				<input class="form-control" type="time" id="hour" name="hour" required>
-			</div>	
-
-			<div class="form-group">
-				<button class="btn btn-primary">Salvar</button>
+						<div class="form-group">
+							<strong><label for="phone">Celular</label></strong>
+							<input class="form-control phone" type="text" name="phone" placeholder="(00)00000-0000" id="phone" required>
+						</div>
+			
+						<div class="form-group">
+							<strong><label for="email">Email</label></strong>
+							<input class="form-control" type="email" name="email" id="email">
+						</div>
+						
+						<div class="form-group">
+							<strong><label for="date">Dia</label></strong>
+							<input class="form-control" type="date" id="date" name="date" required>
+						</div>
+						
+						<div class="form-group">
+							<strong><label for="hour">Hora</label></strong>
+							<input class="form-control" type="time" id="hour" name="hour" required>
+						</div>	
+			
+						<div class="form-group">
+							<button class="btn btn-primary">Salvar</button>
+						</div>
+					</form>
+				</div>
 			</div>
-		</form>
+		</div>
 	</div>
-
-	
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="./jquery.mask.min.js"></script>
 <script>
 	$('.phone').mask('(00)00000-0000');

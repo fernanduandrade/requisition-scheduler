@@ -36,11 +36,11 @@ body {
   background-repeat: no-repeat; }
 
 .container {
-  max-width: 120rem;
+  max-width: 150rem;
   margin: 8rem auto;
   background-color: var(--color-grey-light-1);
   box-shadow: var(--shadow-dark);
-  min-height: 50rem; }
+  min-height: 80rem; }
 
 .header {
   font-size: 1.4rem;
@@ -51,7 +51,7 @@ body {
   justify-content: space-between;
   align-items: center; }
 
-.content {
+.main {
   display: flex; }
 
 .sidebar {
@@ -60,6 +60,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between; }
+
+.content {
+  flex: 1; }
 
 .logo {
   height: 3.25rem;
@@ -200,6 +203,159 @@ body {
     height: 2px;
     bottom: 8px;
     background: currentColor; }
+
+.icon__home {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs, 1));
+  width: 18px;
+  height: 14px;
+  border: 2px solid;
+  border-top: 0;
+  border-radius: 2px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  margin-bottom: -2px; }
+  .icon__home::after, .icon__home::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute; }
+  .icon__home::before {
+    border-top: 2px solid;
+    border-left: 2px solid;
+    border-top-left-radius: 4px;
+    transform: rotate(45deg);
+    top: -5px;
+    border-radius: 3px;
+    width: 14px;
+    height: 14px;
+    left: 0; }
+  .icon__home::after {
+    width: 6px;
+    height: 10px;
+    background: currentColor;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    left: 4px;
+    bottom: -2px; }
+
+.icon__user-add {
+  display: block;
+  transform: scale(var(--ggs, 1));
+  box-sizing: border-box;
+  width: 20px;
+  height: 18px;
+  background: linear-gradient(to left, currentColor 8px, transparent 0) no-repeat 14px 6px/6px 2px, linear-gradient(to left, currentColor 8px, transparent 0) no-repeat 16px 4px/2px 6px; }
+  .icon__user-add::after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    border: 2px solid; }
+  .icon__user-add::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    border: 2px solid;
+    width: 8px;
+    height: 8px;
+    border-radius: 30px;
+    top: 0;
+    left: 2px; }
+  .icon__user-add::after {
+    width: 12px;
+    height: 9px;
+    border-bottom: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    top: 9px; }
+
+.icon__user-list {
+  display: block;
+  transform: scale(var(--ggs, 1));
+  box-sizing: border-box;
+  width: 20px;
+  height: 18px;
+  background: linear-gradient(to left, currentColor 8px, transparent 0) no-repeat 14px 4px/6px 2px, linear-gradient(to left, currentColor 8px, transparent 0) no-repeat 14px 8px/6px 2px, linear-gradient(to left, currentColor 8px, transparent 0) no-repeat 14px 12px/6px 2px; }
+  .icon__user-list::after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    border: 2px solid; }
+  .icon__user-list::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    border: 2px solid;
+    width: 8px;
+    height: 8px;
+    border-radius: 30px;
+    top: 0;
+    left: 2px; }
+  .icon__user-list::after {
+    width: 12px;
+    height: 9px;
+    border-bottom: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    top: 9px; }
+
+.icon__calendar-today {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs, 1));
+  width: 18px;
+  height: 18px;
+  border: 2px solid;
+  border-top: 4px solid;
+  border-radius: 3px; }
+  .icon__calendar-today::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    background: currentColor;
+    height: 4px;
+    width: 4px;
+    border-radius: 2px;
+    right: 2px;
+    bottom: 2px; }
+
+.icon__notifications {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs, 1));
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(to left, currentColor 10px, transparent 0) no-repeat right bottom/2px 8px, linear-gradient(to left, currentColor 10px, transparent 0) no-repeat left top/8px 2px; }
+  .icon__notifications::after {
+    content: "";
+    position: absolute;
+    display: block;
+    box-sizing: border-box; }
+  .icon__notifications::before {
+    content: "";
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    width: 14px;
+    height: 14px;
+    border-left: 2px solid;
+    border-bottom: 2px solid; }
+  .icon__notifications::after {
+    width: 6px;
+    height: 6px;
+    border-radius: 4px;
+    background: currentColor;
+    top: -2px;
+    right: -2px; }
 
 .color--grey {
   color: var(--color-grey-dark-2); }
