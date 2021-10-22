@@ -144,7 +144,11 @@
     background-color: #fff;
     justify-content: start;
     padding-left: 4rem;
+    box-shadow: var(--shadow-dark);
     
+    &__section {
+        
+    }
     &__group {
         &:not(:last-child) {
             margin-bottom: 2rem;
