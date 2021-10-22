@@ -15,7 +15,7 @@ router.get('/editar_agenda/:id', isAuthenticated, RequisitionService.editRequisi
 router.get('/registrar_admin', checkNotAuthenticated,(req, res) => res.render('./pages/admin/register_admin'));
 
 router.get('/cadastrar_agenda', isAuthenticated, (req, res) => {
-	res.render('./pages/cadastrar_agenda');
+	res.render('./pages/cadastrar_agenda', {title: 'Cadastro'});
 });
 
 router.get('/login', checkNotAuthenticated, (req, res) => {
