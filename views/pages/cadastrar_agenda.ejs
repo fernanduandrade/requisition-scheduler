@@ -10,37 +10,41 @@
 
 		<div class="main">
 			<%- include('../partials/sidebar'); %>
+
 			<div class="content">
-				<div class="form container" style="background-color: #ffffff; border-radius: 5px; padding: 20px 10px 10px 10px;">
+				
+				<div class="form">
+					<h2 class="heading-title">
+						Cadastre uma agenda
+					</h2>
 					<form method="POST" action="/registrar_agenda">
-			
-						<div class="form-group">
-							<strong><label for="name">Nome</label></strong>
-							<input class="form-control" type="text" name="name"  id="name" placeholder="Antônia" required>
+						<div class="form__group">
+							<label class="form__label--required">Nome</label>
+							<input class="form__input" type="text" name="name" placeholder="Antônia" required>
 						</div>
 			
-						<div class="form-group">
-							<strong><label for="phone">Celular</label></strong>
-							<input class="form-control phone" type="text" name="phone" placeholder="(00)00000-0000" id="phone" required>
+						<div class="form__group">
+							<label class="form__label--required">Celular</label>
+							<input class="form__input phone" type="text" name="phone" placeholder="(00)00000-0000" required>
 						</div>
 			
-						<div class="form-group">
-							<strong><label for="email">Email</label></strong>
-							<input class="form-control" type="email" name="email" id="email">
+						<div class="form__group">
+							<label class="form__label--required">Email</label>
+							<input class="form__input" type="email" name="email" placeholder="yimir@gmail.com">
 						</div>
 						
-						<div class="form-group">
-							<strong><label for="date">Dia</label></strong>
-							<input class="form-control" type="date" id="date" name="date" required>
+						<div class="form__group">
+							<label class="form__label">Dia</label>
+							<input class="form__input" type="date" name="date" required>
 						</div>
 						
-						<div class="form-group">
-							<strong><label for="hour">Hora</label></strong>
-							<input class="form-control" type="time" id="hour" name="hour" required>
+						<div class="form__group">
+							<label class="form__label">Hora</label>
+							<input class="form__input" type="time" name="hour" required>
 						</div>	
 			
-						<div class="form-group">
-							<button class="btn btn-primary">Salvar</button>
+						<div class="form__group margin-top-meddium">
+							<button class="btn btn--purple">Salvar</button>
 						</div>
 					</form>
 				</div>
