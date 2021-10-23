@@ -137,16 +137,16 @@
 
 //form
 .form {
-    min-height: 80rem;
-    display: flex;
-    margin-top: 0;
-    flex-direction: column;
     background-color: #fff;
-    justify-content: start;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
     padding-left: 4rem;
-    box-shadow: var(--shadow-dark);
+    box-shadow: var(--shadow-light);
     
     &__section {
+        width: 90rem;
+        height: 55rem;
         
     }
     &__group {
@@ -317,8 +317,7 @@
     margin-top: 3rem;
     text-transform: uppercase;
     font-weight: 700;
-    transition: all .2s;
-    color: var(--color-grey-dark-1);
-    letter-spacing: .2rem;
+    color: var(--color-grey-dark-2);
+    letter-spacing: .1rem;
     text-shadow: .5rem 1rem 2rem rgba(var(--color-grey-dark-1), .2);
 }
