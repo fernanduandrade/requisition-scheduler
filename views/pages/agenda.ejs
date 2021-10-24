@@ -13,44 +13,42 @@
       <div class="content">
         <div class="table">
           <div class="table__wrapper">
-            <div class="table__title">
-                <h2 class="heading-title">Lista de sessões agendadas</h2>
-                <table class="table__striped">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Data</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% requisitions.forEach(requisition=> { %>
-                        <tr>
-                            <td>
-                                <%= requisition.name %>
-                            </td>
-                            <td>
-                                <%= requisition.date %>
-                            </td>
-                            <td class="table__action">
-                                <a href="/agenda_registrada/<%= requisition._id %>" class="table__action--view" title="Ver"><i>VER</i></a>
-                                <a href="/editar_agenda/<%= requisition._id %>" class="table__action--edit" title="Editar"><i>EDITAR</i></a>
-                                <a href="/agenda_registrada/<%= requisition._id %>" onclick="return confirm('Tem certeza que deseja excluir?');" class="table__action--finish" title="Deletar"><i>FINALIZAR</i></a>
-                            </td>
-                        </tr>
-                        <% }) %>
-                    </tbody>
-              </table>
-              <div>
-                <div class="table__hint-text">Mostrando total de <strong><%= totalRegister %></strong> cadastros</div>
-                <ul class="table__pagination">
-                  <% for(let i=1; i <=pages; i++) {%>
-                  <li <% if (i==currentPage) {%> class="table__pagination__page-item table__pagination__page-item--active" <%} else { %> class="table__pagination__page-item" <% } %>><a href="/lista?page=<%= i%>&limit=5" class="page-link">
-                      <%= i%>
-                    </a></li>
-                  <% } %>
-                </ul>
-              </div>
+            <h2 class="heading-title">Lista de sessões agendadas</h2>
+            <table class="table__striped">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Data</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% requisitions.forEach(requisition=> { %>
+                <tr>
+                  <td>
+                    <%= requisition.name %>
+                  </td>
+                  <td>
+                    <%= requisition.date %>
+                  </td>
+                  <td class="table__action">
+                    <a href="/agenda_registrada/<%= requisition._id %>" class="table__action--view" title="Ver"><i>VER</i></a>
+                    <a href="/editar_agenda/<%= requisition._id %>" class="table__action--edit" title="Editar"><i>EDITAR</i></a>
+                    <a href="/agenda_registrada/<%= requisition._id %>" onclick="return confirm('Tem certeza que deseja excluir?');" class="table__action--finish" title="Deletar"><i>FINALIZAR</i></a>
+                  </td>
+                </tr>
+                <% }) %>
+              </tbody>
+            </table>
+            <div>
+              <div class="table__hint-text">Mostrando total de <strong><%= totalRegister %></strong> cadastros</div>
+              <ul class="table__pagination">
+                <% for(let i=1; i <=pages; i++) {%>
+                <li <% if (i==currentPage) {%> class="table__pagination__page-item table__pagination__page-item--active" <%} else { %> class="table__pagination__page-item" <% } %>><a href="/lista?page=<%= i%>&limit=5" class="page-link">
+                    <%= i%>
+                  </a></li>
+                <% } %>
+              </ul>
             </div>
           </div>
         </div>
@@ -60,4 +58,5 @@
   </div>
   </div>
 </body>
+
 </html>
