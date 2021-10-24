@@ -1,7 +1,7 @@
 .container {
     // pensar se deixo ou não
     // max-width: 130rem;
-    // height: auto;
+    min-height: 90rem;
     // margin: 8rem auto;
     background-color: var(--color-grey-light-1);
     box-shadow: var(--shadow-dark);
@@ -38,16 +38,4 @@
     display: flex;
     width: 100%;
     height: 100%;
-}
-
-#calendar {
-    border: none;
-    margin: auto;
-    min-height: 80rem;
-    min-width: 95rem;
-    border-radius: 4px;
-    overflow: hidden;
-    background-color: #fff;
-    box-shadow: var(--shadow-light);
-    align-items: stretch;
 }
