@@ -14,8 +14,8 @@
         <div class="table">
           <div class="table__wrapper">
             <h2 class="heading-title">Lista de sessões agendadas</h2>
-            <table class="table__striped">
-              <thead>
+            <table class="table__striped margin-top-meddium">
+              <thead class="table__thead">
                 <tr>
                   <th>Nome</th>
                   <th>Data</th>
@@ -32,21 +32,23 @@
                     <%= requisition.date %>
                   </td>
                   <td class="table__action">
-                    <a href="/agenda_registrada/<%= requisition._id %>" class="table__action--view" title="Ver"><i>VER</i></a>
-                    <a href="/editar_agenda/<%= requisition._id %>" class="table__action--edit" title="Editar"><i>EDITAR</i></a>
-                    <a href="/agenda_registrada/<%= requisition._id %>" onclick="return confirm('Tem certeza que deseja excluir?');" class="table__action--finish" title="Deletar"><i>FINALIZAR</i></a>
+                    <a href="/agenda_registrada/<%= requisition._id %>" class="table__action--view" title="Ver"><i>ver</i></a>
+                    <a href="/editar_agenda/<%= requisition._id %>" class="table__action--edit" title="Editar"><i>edit</i></a>
+                    <a href="/agenda_registrada/<%= requisition._id %>" onclick="return confirm('Agenda finalizada?');" class="table__action--finish" title="Deletar"><i>finalizar</i></a>
                   </td>
                 </tr>
                 <% }) %>
               </tbody>
             </table>
-            <div>
-              <div class="table__hint-text">Mostrando total de <strong><%= totalRegister %></strong> cadastros</div>
+            <div class="table__info">
+              <div class="table__hint-text">Total de cadastros <strong><%= totalRegister %></strong></div>
               <ul class="table__pagination">
                 <% for(let i=1; i <=pages; i++) {%>
-                <li <% if (i==currentPage) {%> class="table__pagination__page-item table__pagination__page-item--active" <%} else { %> class="table__pagination__page-item" <% } %>><a href="/lista?page=<%= i%>&limit=5" class="page-link">
-                    <%= i%>
-                  </a></li>
+                  <li <% if (i==currentPage) {%> class="table__pagination__page-item table__pagination__page-item--active" <%} else { %> class="table__pagination__page-item" <% } %>>
+                    <a href="/lista?page=<%= i%>&limit=5">
+                      <%= i%>
+                    </a>
+                  </li>
                 <% } %>
               </ul>
             </div>
