@@ -298,7 +298,7 @@ body {
 
 .table {
   min-height: 80rem;
-  min-width: 105rem;
+  min-width: 135rem;
   margin: auto; }
   .table__thead {
     background-color: #fcfcfc; }
@@ -335,19 +335,23 @@ body {
     font-size: 1.4rem; }
   .table__pagination {
     list-style: none;
-    display: flex;
-    justify-content: space-between;
-    width: 12rem; }
-    .table__pagination li, .table__pagination a {
+    display: flex; }
+    .table__pagination__page-item {
       display: flex;
+      margin-right: 1rem;
       text-decoration: none;
       font-size: 2rem;
-      width: 10px;
-      border-radius: 5px;
+      border-radius: 50%;
+      padding: 0px 4px;
       color: var(--color-grey-dark-2);
-      background-color: orangered; }
-    .table__pagination__page-item:hover {
-      background: #0397d6; }
+      background-color: #fff;
+      border: 0.1px solid var(--color-grey-dark-2); }
+      .table__pagination__page-item:hover {
+        background-color: #0397d6;
+        color: #fff; }
+      .table__pagination__page-item--active {
+        background: #03A9F4;
+        color: #fff; }
 
 .icon__search {
   box-sizing: border-box;

@@ -343,7 +343,7 @@
 // table
 .table {
     min-height: 80rem;
-    min-width: 105rem;
+    min-width: 135rem;
     margin: auto;
 
     &__thead{
@@ -407,31 +407,27 @@
     &__pagination {
         list-style: none;
         display: flex;
-        justify-content: space-between;
-        width: 12rem;
 
-        li, a {
+        &__page-item {
             display: flex;
-            
+            margin-right: 1rem;
             text-decoration: none;
             font-size: 2rem;
-            width: 10px;
-            border-radius: 5px;
+            border-radius: 50%;
+            padding: 0px 4px;
             color: var(--color-grey-dark-2);
-            background-color: orangered;
-        }
-        
-        &__page-item {
+            background-color: #fff;
+            border: .1px solid var(--color-grey-dark-2); 
             
 
-            // &--active a {
-                
-            //     background: #03A9F4;
-            //     color: #fff;
-            // }
-    
             &:hover {        
-                background: #0397d6;
+                background-color: #0397d6;
+                color: #fff;
+            }
+
+            &--active {
+                background: #03A9F4;
+                color: #fff;
             }
         }
     }

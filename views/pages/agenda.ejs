@@ -44,8 +44,8 @@
               <div class="table__hint-text">Total de cadastros <strong><%= totalRegister %></strong></div>
               <ul class="table__pagination">
                 <% for(let i=1; i <=pages; i++) {%>
-                  <li <% if (i==currentPage) {%> class="table__pagination__page-item table__pagination__page-item--active" <%} else { %> class="table__pagination__page-item" <% } %>>
-                    <a href="/lista?page=<%= i%>&limit=5">
+                  <li>
+                    <a href="/lista?page=<%= i%>&limit=5" <% if (i==currentPage) {%> class="table__pagination__page-item table__pagination__page-item--active" <%} else { %> class="table__pagination__page-item" <% } %>>
                       <%= i%>
                     </a>
                   </li>
