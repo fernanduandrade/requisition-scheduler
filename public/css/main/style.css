@@ -301,18 +301,23 @@ body {
   min-width: 135rem;
   margin: auto; }
   .table__thead {
-    background-color: #fcfcfc; }
-  .table th, .table i {
-    font-size: 1.3rem;
-    margin: 0 .5rem; }
-  .table td:last-child {
-    width: 130px; }
+    text-transform: uppercase;
+    background-color: #fcfcfc;
+    height: 3rem; }
+  .table td {
+    height: 4.5rem;
+    font-size: 2rem; }
+  .table td:first-child {
+    width: 770px; }
   .table__info {
     display: flex;
     justify-content: space-between;
     margin-top: 2rem; }
   .table__action {
-    font-size: 1.4rem; }
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.8rem;
+    font-weight: bold; }
     .table__action a {
       text-decoration: none;
       text-transform: uppercase; }
@@ -322,6 +327,8 @@ body {
       color: var(--color-action-finish); }
     .table__action--edit {
       color: var(--color-action-edit); }
+  .table__date {
+    text-align: center; }
   .table__wrapper {
     background: #fff;
     padding: 2rem; }

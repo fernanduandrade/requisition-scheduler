@@ -347,15 +347,16 @@
     margin: auto;
 
     &__thead{
+        text-transform: uppercase;
         background-color: #fcfcfc;
+        height: 3rem;
     }
-    th, i {
-        font-size: 1.3rem;
-        margin: 0 .5rem;
+    td {
+        height: 4.5rem;
+        font-size: 2rem;
     }
-
-    td:last-child {
-        width: 130px;
+    td:first-child {
+        width: 770px;
     }
 
     &__info {
@@ -365,12 +366,16 @@
     }
 
     &__action {
-        font-size: 1.4rem;
+        display: flex;
+        justify-content: space-around;
+        font-size: 1.8rem;
+        font-weight: bold;
 
         a {
             text-decoration: none;
             text-transform: uppercase;
-        }
+        }        
+
         &--view {
             color: var(--color-action-view);
         }
@@ -382,6 +387,10 @@
         &--edit {
             color: var(--color-action-edit);
         }
+    }
+
+    &__date {
+        text-align: center;
     }
 
     &__wrapper {

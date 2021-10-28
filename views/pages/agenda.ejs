@@ -24,19 +24,20 @@
               </thead>
               <tbody>
                 <% requisitions.forEach(requisition=> { %>
-                <tr>
-                  <td>
-                    <%= requisition.name %>
-                  </td>
-                  <td>
-                    <%= requisition.date %>
-                  </td>
-                  <td class="table__action">
-                    <a href="/agenda_registrada/<%= requisition._id %>" class="table__action--view" title="Ver"><i>ver</i></a>
-                    <a href="/editar_agenda/<%= requisition._id %>" class="table__action--edit" title="Editar"><i>edit</i></a>
-                    <a href="/agenda_registrada/<%= requisition._id %>" onclick="return confirm('Agenda finalizada?');" class="table__action--finish" title="Deletar"><i>finalizar</i></a>
-                  </td>
-                </tr>
+                  <% const data = new Date(requisition.date) %>
+                  <tr>
+                    <td>
+                      <%= requisition.name %>
+                    </td>
+                    <td class="table__date">
+                      <%= data.toLocaleDateString('pt-BR', {timeZone: 'UTC'}); %>
+                    </td>
+                    <td class="table__action">
+                      <a href="/agenda_registrada/<%= requisition._id %>" class="table__action--view" title="Ver">ver</a>
+                      <a href="/editar_agenda/<%= requisition._id %>" class="table__action--edit" title="Editar">editar</a>
+                      <a href="/agenda_registrada/<%= requisition._id %>" onclick="return confirm('Agenda finalizada?');" class="table__action--finish" title="Deletar">finalizar</a>
+                    </td>
+                  </tr>
                 <% }) %>
               </tbody>
             </table>
