@@ -360,6 +360,16 @@ body {
         background: #03A9F4;
         color: #fff; }
 
+.user-profile {
+  min-height: 80rem;
+  min-width: 135rem;
+  margin: auto; }
+  .user-profile__information {
+    background-color: #fff;
+    width: 90rem;
+    display: flex;
+    flex-direction: column; }
+
 .icon__search {
   box-sizing: border-box;
   position: relative;

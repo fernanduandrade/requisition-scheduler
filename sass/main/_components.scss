@@ -345,6 +345,7 @@
     min-height: 80rem;
     min-width: 135rem;
     margin: auto;
+    
 
     &__thead{
         text-transform: uppercase;
@@ -439,5 +440,19 @@
                 color: #fff;
             }
         }
+    }
+}
+
+//perfil do agendado
+.user-profile {
+    min-height: 80rem;
+    min-width: 135rem;
+    margin: auto;
+
+    &__information {
+        background-color: #fff;
+        width: 90rem;
+        display: flex;
+        flex-direction: column;
     }
 }

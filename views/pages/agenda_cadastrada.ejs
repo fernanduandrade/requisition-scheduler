@@ -4,22 +4,21 @@
 	<%- include('../partials/head', {title: 'Agenda Cadastrada'}); %>
 </head>
 
-<header>
-	<%- include('../partials/header'); %>
-</header>
-
 <body>
-
-	<div class="container center">
-		<div class="card">
-			<h2><%= requisition.name %></h2>
-			<hr/>
-			<p><strong>	Telefone: <%= requisition.phone %></strong></p>
-			<hr>
-
-			<% if(requisition.finishedSession == false) { %>
-			<button>Finalizar</button>
-			<% } %>
+	<div class="container">
+		<%- include('../partials/header'); %>
+		<div class="main">
+			<%- include('../partials/sidebar', {active: 'Cadastro'}); %>
+			<div class="content">
+				<div class="user-profile">
+					<div class="user-profile__information">
+						<h2><%= requisition.name %></h2>
+						<hr/>
+						<p><strong>	Telefone: <%= requisition.phone %></strong></p>
+						<hr>
+					</div>	
+				</div>
+			</div>
 		</div>
 	</div>
 
