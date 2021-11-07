@@ -249,6 +249,115 @@
           right: -2px;
         }
     }
+
+    &__profile{
+        display: block;
+        box-sizing: border-box;
+        border: 2px solid;
+        border-radius: 100px;
+    
+        &::after, &::before {
+          display: block;
+          box-sizing: border-box;
+          border: 2px solid;
+          border-radius: 100px;
+        }
+    
+        overflow: hidden;
+        transform: scale(var(--ggs, 1));
+        width: 22px;
+        height: 22px;
+        position: relative;
+    
+        &::after, &::before {
+          content: "";
+          position: absolute;
+          top: 2px;
+          left: 5px;
+          width: 8px;
+          height: 8px;
+        }
+    
+        &::after {
+          border-radius: 200px;
+          top: 11px;
+          left: 0px;
+          width: 18px;
+          height: 18px;
+        }
+    }
+
+    &__check {
+        box-sizing: border-box;
+        position: relative;
+        display: block;
+        transform: scale(var(--ggs, 1));
+        width: 22px;
+        height: 22px;
+        border: 2px solid;
+        border-radius: 100px;
+
+        &::after {
+        content: "";
+        display: block;
+        box-sizing: border-box;
+        position: absolute;
+        left: 3px;
+        top: -1px;
+        width: 6px;
+        height: 10px;
+        border-color: currentColor;
+        border-width: 0 2px 2px 0;
+        border-style: solid;
+        transform-origin: bottom left;
+        transform: rotate(45deg);
+        }
+    }
+
+    &__pen {
+        box-sizing: border-box;
+        position: relative;
+        display: block;
+        transform: rotate(-45deg) scale(var(--ggs, 1));
+        width: 14px;
+        height: 4px;
+        border-right: 2px solid transparent;
+        box-shadow: 0 0 0 2px, inset -2px 0 0;
+        border-top-right-radius: 1px;
+        border-bottom-right-radius: 1px;
+        margin-top: -3px;
+    
+        &::after {
+          content: "";
+          display: block;
+          box-sizing: border-box;
+          position: absolute;
+        }
+    
+        &::before {
+          content: "";
+          display: block;
+          box-sizing: border-box;
+          position: absolute;
+          background: currentColor;
+          border-left: 0;
+          right: -6px;
+          width: 3px;
+          height: 4px;
+          border-radius: 1px;
+          top: 0;
+        }
+    
+        &::after {
+          width: 8px;
+          height: 7px;
+          border-top: 4px solid transparent;
+          border-bottom: 4px solid transparent;
+          border-right: 7px solid;
+          left: -11px;
+          top: -2px;
+        }
+    }
 }
 
 // colores
@@ -259,5 +368,9 @@
 
     &--white {
         color: #fff;
+    }
+
+    &--black {
+        color: #0B0B0B;
     }
 }

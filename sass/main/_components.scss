@@ -357,7 +357,7 @@
         font-size: 2rem;
     }
     td:first-child {
-        width: 770px;
+        width: 670px;
     }
 
     &__info {
@@ -366,28 +366,11 @@
         margin-top: 2rem;
     }
 
-    &__action {
+    &__actions {
         display: flex;
-        justify-content: space-around;
-        font-size: 1.8rem;
-        font-weight: bold;
+        justify-content: space-evenly;
+        align-items: center;
 
-        a {
-            text-decoration: none;
-            text-transform: uppercase;
-        }        
-
-        &--view {
-            color: var(--color-action-view);
-        }
-
-        &--finish {
-            color:  var(--color-action-finish);
-        }
-
-        &--edit {
-            color: var(--color-action-edit);
-        }
     }
 
     &__date {
@@ -451,8 +434,15 @@
 
     &__information {
         background-color: #fff;
-        width: 90rem;
         display: flex;
         flex-direction: column;
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+        font-family: inherit;
+        color: inherit;
+
+        p {
+            margin-top: 1.5rem;
+        }
     }
 }

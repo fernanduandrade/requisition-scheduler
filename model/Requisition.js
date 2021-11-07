@@ -17,7 +17,7 @@ const requisitionSchema = new Schema({
         required: false
     },
     date: {
-        type: String,
+        type: Date,
         required: true
     },
     hour: {
