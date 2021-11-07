@@ -1,4 +1,4 @@
-import { Requisition } from '../model/Requisition.js';
+import { Requisition } from '../Models/Requisition.js';
 
 class RequisitionController {
     async create(req, res) {

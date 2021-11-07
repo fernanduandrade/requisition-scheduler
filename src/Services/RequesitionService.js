@@ -1,5 +1,5 @@
-import { Requisition } from '../model/Requisition.js';
-import RequisitionFactory from '../factories/RequisitionFactory.js';
+import { Requisition } from '../Models/Requisition.js';
+import RequisitionFactory from '../Factories/RequisitionFactory.js';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import ejs from 'ejs';

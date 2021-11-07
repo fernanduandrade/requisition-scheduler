@@ -1,5 +1,5 @@
-import { Admin } from '../model/Admin.js';
-import AdminService from '../services/AdminService.js';
+import { Admin } from '../Models/Admin.js';
+import AdminService from '../Services/AdminService.js';
 
 import { Strategy as LocalStrategy} from 'passport-local';
 import passport from 'passport';

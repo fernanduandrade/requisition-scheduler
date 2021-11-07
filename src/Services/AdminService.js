@@ -1,4 +1,4 @@
-import { Admin } from '../model/Admin.js';
+import { Admin } from '../Models/Admin.js';
 
 class AdminService {
     async getByName(name) {
