@@ -122,10 +122,6 @@ body {
     align-items: center; }
   .user-nav > *:hover {
     background-color: var(--color-grey-light-2); }
-  .user-nav__user-photo {
-    height: 3.75rem;
-    border-radius: 50%;
-    margin-right: 1rem; }
 
 .side-nav {
   font-size: 1.4rem;
@@ -336,18 +332,20 @@ body {
     .table__pagination__page-item {
       display: flex;
       margin-right: 1rem;
-      text-decoration: none;
       font-size: 2rem;
-      border-radius: 50%;
-      padding: 0px 4px;
-      color: var(--color-grey-dark-2);
-      background-color: #fff;
-      border: 0.1px solid var(--color-grey-dark-2); }
+      width: 30px;
+      height: 30px;
+      border-radius: 100px;
+      justify-content: center;
+      background-color: var(--color-grey-dark-2); }
       .table__pagination__page-item:hover {
-        background-color: #0397d6;
-        color: #fff; }
+        transition: .2s all;
+        background-color: var(--color-grey-dark-3); }
       .table__pagination__page-item--active {
-        background: #03A9F4;
+        background-color: var(--color-dark); }
+      .table__pagination__page-item a {
+        text-decoration: none;
+        align-self: center;
         color: #fff; }
 
 .user-profile {

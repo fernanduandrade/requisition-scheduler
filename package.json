@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js",
-    "watch:main:sass": "node-sass ./sass/main/main.scss ./public/css/main/style.css -w",
-    "watch:login:sass": "node-sass ./sass/login/main.scss ./public/css/login/style.css -w",
+    "watch:main:sass": "node-sass ./src/Sass/main/main.scss ./src/Public/css/main/style.css -w",
+    "watch:login:sass": "node-sass ./src/Sass/login/main.scss ./src/Public/css/login/style.css -w",
     "server": "nodemon --exec babel-node ./index.js",
     "dev": "npm-run-all --parallel server watch:main:sass",
     "test": "jest --detectOpenHandles --silent=false"

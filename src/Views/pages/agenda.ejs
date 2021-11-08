@@ -53,9 +53,11 @@
               <ul class="table__pagination">
                 <% for(let i=1; i <=pages; i++) {%>
                   <li>
-                    <a href="/lista?page=<%= i%>&limit=5" <% if (i==currentPage) {%> class="table__pagination__page-item table__pagination__page-item--active" <%} else { %> class="table__pagination__page-item" <% } %>>
-                      <%= i%>
-                    </a>
+                    <div <% if (i==currentPage) {%> class="table__pagination__page-item table__pagination__page-item--active" <%} else { %> class="table__pagination__page-item" <% } %>>
+                      <a href="/lista?page=<%= i%>&limit=5" >
+                        <%= i%>
+                      </a>
+                    </div>
                   </li>
                 <% } %>
               </ul>

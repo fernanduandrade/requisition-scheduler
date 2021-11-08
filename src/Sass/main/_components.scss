@@ -398,22 +398,26 @@
         &__page-item {
             display: flex;
             margin-right: 1rem;
-            text-decoration: none;
-            font-size: 2rem;
-            border-radius: 50%;
-            padding: 0px 4px;
-            color: var(--color-grey-dark-2);
-            background-color: #fff;
-            border: .1px solid var(--color-grey-dark-2); 
             
-
+            
+            font-size: 2rem;
+            width: 30px;
+            height: 30px;
+            border-radius: 100px;
+            justify-content: center;
             &:hover {        
-                background-color: #0397d6;
-                color: #fff;
+                transition: .2s all;
+                background-color: var(--color-grey-dark-3);
             }
+            background-color: var(--color-grey-dark-2);
 
             &--active {
-                background: #03A9F4;
+                background-color: var(--color-dark);
+            }
+            
+            a {
+                text-decoration: none;
+                align-self: center;
                 color: #fff;
             }
         }
