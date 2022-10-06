@@ -4,7 +4,7 @@ import session  from 'express-session';
 import morgan from 'morgan';
 import path from 'path';
 
-// import RequisitionService from './src/Services/RequesitionService.js';
+import RequisitionService from './Services/RequesitionService.js';
 
 import passport from 'passport';
 import passConfig from './Middleware/passportConfig.js';
@@ -71,8 +71,8 @@ export class App {
     }
 }
 
-// const pollTime = 8 * 60 * 60000;
+const pollTime = 30000;
 
-// setInterval(async () => {
-// 	await RequisitionService.sendNotification();
-// }, pollTime)
+setInterval(async () => {
+	await RequisitionService.sendNotification();
+}, pollTime)

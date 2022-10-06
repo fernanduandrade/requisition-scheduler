@@ -124,6 +124,7 @@ class RequisitionService {
 	async sendNotification() {
 		const records = await this.getTotalRegisters(false);
 		let today = new Date();
+
 		let sender = nodemailer.createTransport({
 			service: 'gmail', 
 			host: 'smtp.gmail.com',
@@ -136,17 +137,17 @@ class RequisitionService {
 		console.log(`Verificando agendas para hoje ${today}`);
 
 		records.forEach(async record => {
-			let date = record.date.split('-').reverse().join('/');
-			
 
-			const data = await ejs.renderFile('./views/templates/email.ejs', {name: record.name, hour: record.hour});
+			const data = await ejs.renderFile('./src/Views/templates/email.ejs', {name: record.name, hour: record.hour});
 	
-			if(today.toLocaleDateString('pt-BR') === date) {
+			if(today.toLocaleDateString('pt-BR') === record.date.toLocaleDateString('pt-BR')) {
+				
 				if(!record.notified) {
+					console.log('enviando email');
 					sender.sendMail({
-						from: 'Gilson Visgueira <nando.andradi.2@gmail.com>',
+						from: 'Prefeitura Municipal de Juazeiro do Piauí <nando.andradi.2@gmail.com>',
 						to: record.email,
-						subject: `${record.name} sua sessão de tatuagem é hoje!`,
+						subject: `${record.name} Sua agenda é hoje!`,
 						html: data
 
 					}).then(response => {
